@@ -1,18 +1,11 @@
 <uml>
    <greenVersion="30500"/>
    <type>
-      <name="=ProjetoBanco/src<BC{AgenciaCentral.java[AgenciaCentral"/>
-      <height="111"/>
-      <width="206"/>
-      <x="54"/>
-      <y="62"/>
-   </type>
-   <type>
       <name="=ProjetoBanco/src<BC{ClienteBancario.java[ClienteBancario"/>
-      <height="170"/>
+      <height="302"/>
       <width="209"/>
-      <x="55"/>
-      <y="189"/>
+      <x="44"/>
+      <y="240"/>
    </type>
    <type>
       <name="=ProjetoBanco/src<BC{Agencia.java[Agencia"/>
@@ -35,33 +28,26 @@
       <x="408"/>
       <y="316"/>
    </type>
-   <relationship>
-      <class="edu.buffalo.cse.green.relationship.realization.RealizationPart"/>
-      <sourceType="=ProjetoBanco/src<BC{Conta.java[Conta"/>
-      <targetType="=ProjetoBanco/src<BC{ContaGenerica.java[ContaGenerica"/>
-      <bendpoints>
-      </bendpoints>
-   </relationship>
    <type>
       <name="=ProjetoBanco/src<BC{ContaCorrente.java[ContaCorrente"/>
       <height="-1"/>
       <width="-1"/>
-      <x="289"/>
-      <y="531"/>
+      <x="281"/>
+      <y="703"/>
    </type>
-   <relationship>
-      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
-      <sourceType="=ProjetoBanco/src<BC{ContaCorrente.java[ContaCorrente"/>
-      <targetType="=ProjetoBanco/src<BC{Conta.java[Conta"/>
-      <bendpoints>
-      </bendpoints>
-   </relationship>
    <type>
       <name="=ProjetoBanco/src<BC{Poupanca.java[Poupanca"/>
       <height="-1"/>
       <width="-1"/>
-      <x="563"/>
-      <y="529"/>
+      <x="603"/>
+      <y="701"/>
+   </type>
+   <type>
+      <name="=ProjetoBanco/src<BC{Banco.java[Banco"/>
+      <height="175"/>
+      <width="206"/>
+      <x="58"/>
+      <y="29"/>
    </type>
    <relationship>
       <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
@@ -70,5 +56,19 @@
       <bendpoints>
       </bendpoints>
    </relationship>
+   <relationship>
+      <class="edu.buffalo.cse.green.relationship.realization.RealizationPart"/>
+      <sourceType="=ProjetoBanco/src<BC{Conta.java[Conta"/>
+      <targetType="=ProjetoBanco/src<BC{ContaGenerica.java[ContaGenerica"/>
+      <bendpoints>
+      </bendpoints>
+   </relationship>
+   <type>
+      <name="=ProjetoBanco/src<BC{TestaTudo.java[TestaTudo"/>
+      <height="-1"/>
+      <width="-1"/>
+      <x="814"/>
+      <y="255"/>
+   </type>
 </uml>
 
