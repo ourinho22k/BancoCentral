@@ -9,6 +9,8 @@ package BC;
  */
 public abstract class Conta implements ContaGenerica {
 
+	
+
 	/**
 	 * este é o numero desta conta, devera ser unico em cada agencia
 	 */
@@ -121,4 +123,10 @@ public abstract class Conta implements ContaGenerica {
 		return false;
 	}
 
+	@Override
+	public String toString() {
+		return "Conta [NumConta=" + NumConta + ", NumCliente=" + NumCliente
+				+ ", Saldo=" + Saldo + ", CPMF=" + CPMF + "]";
+	}
+	
 }
