@@ -10,95 +10,91 @@ package BC;
 public class ClienteBancario {
 
 	/**
-	 * 
+	 * nome do infitete do cliente do banco
 	 */
-	private java.lang.String NomeCliente;
+	private String NomeCliente;
 	/**
-	 * 
+	 * este é o numero do cliente , com este numero as contas serao localisadas
 	 */
-	private short NumCliente;
-	public java.lang.String getNomeCliente() {
+	private int NumCliente;
+	/**
+	 * sera o endereco, opcional 
+	 */
+	private String Endereco;
+	/**
+	 * telefone do cara, opcional
+	 */
+	private String Telefone;
+	/**
+	 * registro geral do cliente tambem opcional por enquanto
+	 */
+	private String RG;
+	/**
+	 * CPF do cliente, opcional por enquanto
+	 */
+	private String CPF;
+
+	/**
+	 * geters e seters da galera acima
+	 */
+	public String getNomeCliente() {
 		return NomeCliente;
 	}
 
-	public void setNomeCliente(java.lang.String nomeCliente) {
+	public void setNomeCliente(String nomeCliente) {
 		NomeCliente = nomeCliente;
 	}
 
-	public short getNumCliente() {
+	public int getNumCliente() {
 		return NumCliente;
 	}
 
-	public void setNumCliente(short numCliente) {
+	public void setNumCliente(int numCliente) {
 		NumCliente = numCliente;
 	}
 
-	public java.lang.String getEndereco() {
+	public String getEndereco() {
 		return Endereco;
 	}
 
-	public void setEndereco(java.lang.String endereco) {
+	public void setEndereco(String endereco) {
 		Endereco = endereco;
 	}
 
-	public int getNumeroEndereco() {
-		return NumeroEndereco;
-	}
-
-	public void setNumeroEndereco(int numeroEndereco) {
-		NumeroEndereco = numeroEndereco;
-	}
-
-	public java.lang.String getTelefone() {
+	
+	public String getTelefone() {
 		return Telefone;
 	}
 
-	public void setTelefone(java.lang.String telefone) {
+	public void setTelefone(String telefone) {
 		Telefone = telefone;
 	}
 
-	public java.lang.String getRG() {
+	public String getRG() {
 		return RG;
 	}
 
-	public void setRG(java.lang.String rG) {
+	public void setRG(String rG) {
 		RG = rG;
 	}
 
-	public java.lang.String getCPF() {
+	public String getCPF() {
 		return CPF;
 	}
 
-	public void setCPF(java.lang.String cPF) {
+	public void setCPF(String cPF) {
 		CPF = cPF;
 	}
 
-	/**
-	 * 
+	/*
+	 * construtor, exigencia minima pra um cliente estanciar um cliente nome e numero do cliente
 	 */
-	private java.lang.String Endereco;
-	/**
-	 * numero da casa 
-	 */
-	private int NumeroEndereco;
-	/**
-	 * 
-	 */
-	private java.lang.String Telefone;
-	/**
-	 * 
-	 */
-	private java.lang.String RG;
-	/**
-	 * 
-	 */
-	private java.lang.String CPF;
-
-	/**
-	 * 
-	 */
-	public ClienteBancario() {
+	public ClienteBancario(int numCliente,String nomeCliente) {
 		// TODO Auto-generated constructor stub
+		setNumCliente(numCliente);
+		setNomeCliente(nomeCliente);
+	
+	
 	}
 
 }

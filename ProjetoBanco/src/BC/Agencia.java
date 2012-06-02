@@ -26,9 +26,8 @@ public class Agencia {
 	/**
 	 * lista de contas, aqui deve fiar todas as ccontas desta agencia!!
 	 */
-	HashSet<Conta> listaContas = new HashSet<>();
+	HashSet<Conta> listaContas = new HashSet<Conta>();
 	 
- 
 	
 	/**
 	 * 
@@ -38,8 +37,8 @@ public class Agencia {
 	}
 
 	
-	public void criaContaCorrente(int numeconta,int numecliente,double valor){
-		
+	public void criaContaCorrente(int numecliente,double valor){
+	
 		setNumeContas(); 
 		
 		ContaCorrente contCorrente = new ContaCorrente(getNumeContas(), numecliente, valor); 
@@ -49,7 +48,7 @@ public class Agencia {
 			}
 		
 		
-	public void criaPoupanca(int numeconta,int numecliente,double valor){
+	public void criaPoupanca(int numecliente,double valor){
 		
 		setNumPoupanca();
 		

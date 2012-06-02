@@ -3,6 +3,9 @@
  */
 package BC;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 /**
  * @author fil
  *
@@ -13,11 +16,11 @@ public class Banco {
 	 * instanciando cliente 
 	 * 
 	 */
- ClienteBancario cliente = new ClienteBancario();
+
 	/**
 	 * 
 	 */
-	private java.util.HashSet ListaClientes;
+//	HashMap<Cn,cL> ListaClientes = new HashMap();
 	
 	/**
 	 * aqui deve ficas as agencias criadas
