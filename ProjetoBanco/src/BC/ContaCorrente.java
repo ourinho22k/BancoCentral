@@ -9,8 +9,8 @@ package BC;
  */
 public class ContaCorrente extends Conta {
 
-	public ContaCorrente(int numeroconta, int numerocliente, double valo) {
-		super(numeroconta, numerocliente, valo);
+	public ContaCorrente(int numeroconta, int numerocliente) {
+		super(numeroconta, numerocliente);
 		// TODO Auto-generated constructor stub
 	}
 

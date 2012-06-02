@@ -64,11 +64,10 @@ public abstract class Conta implements ContaGenerica {
 	/*
 	 * construtos unico que obriga a setar numero ca conta , numero do cliente e o saldo inicial
 	 */
-		public Conta(int numeroconta,int numerocliente,double valo) {
+		public Conta(int numeroconta,int numerocliente) {
 		// TODO Auto-generated constructor stub
 			setNumConta(numeroconta);
 			setNumCliente(numerocliente);
-			setSaldo(valo);
 	}
 
 	public int getNumConta() {

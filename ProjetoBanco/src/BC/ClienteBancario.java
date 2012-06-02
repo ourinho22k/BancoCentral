@@ -14,7 +14,7 @@ public class ClienteBancario {
 	 */
 	private String NomeCliente;
 	/**
-	 * este é o numero do cliente , com este numero as contas serao localisadas
+	 * este é o numero do cliente , com este numero as contas serao localizadas
 	 */
 	private int NumCliente;
 	/**
@@ -84,6 +84,13 @@ public class ClienteBancario {
 
 	public void setCPF(String cPF) {
 		CPF = cPF;
+	}
+	
+
+	@Override
+	public String toString() {
+		return "ClienteBancario [NomeCliente=" + NomeCliente + ", Endereco=" + Endereco + ", Telefone="
+				+ Telefone + ", RG=" + RG + ", CPF=" + CPF + "]";
 	}
 
 	/*

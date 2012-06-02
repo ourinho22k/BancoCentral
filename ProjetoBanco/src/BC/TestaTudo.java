@@ -3,8 +3,11 @@
  */
 package BC;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.TreeSet;
 
 /**
  * @author fil
@@ -24,7 +27,10 @@ public class TestaTudo {
 	 */
 	public static void main(String[] args) {
 		
-//		Agencia a = new Agencia();
+		Banco b = new Banco();
+		Agencia a = new Agencia(100);
+		if(b.cadastraAgencia(2)) System.out.println("agencia cadastrada com sucesso");
+		
 //		
 //		
 //		
@@ -47,17 +53,11 @@ public class TestaTudo {
 //		System.out.println(p.getSaldo()+"acaba aki");
 //		
 //		a.listaContas.add(p);
+//		int teste;
+//		ClienteBancario newc = new ClienteBancario(50, "Jessin da Tora");
+//		HashMap<teste ClienteBancario>  lc =new HashMap<>();
+	
 		
-		ClienteBancario c = new ClienteBancario(010, "Alternativo");
-		ClienteBancario d = new ClienteBancario(011, "Heline");
-		ClienteBancario a = new ClienteBancario(010, "Pinto Biu");
-		ClienteBancario q = new ClienteBancario(010, "Alternativo");
-		Collection<ClienteBancario> hasteste = new HashSet<ClienteBancario>();
-		System.out.println( hasteste.add(c));
-		System.out.println( hasteste.add(d));
-		System.out.println( hasteste.add(a));
-		System.out.println( hasteste.add(q));
-		System.out.println(hasteste.toString());
 		
 		// TODO Auto-generated method stub
 
