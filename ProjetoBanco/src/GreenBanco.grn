@@ -65,22 +65,8 @@
    </type>
    <relationship>
       <class="edu.buffalo.cse.green.relationship.dependency.DependencyLPart"/>
-      <sourceType="=ProjetoBanco/src<BC{Agencia.java[Agencia"/>
-      <targetType="=ProjetoBanco/src<BC{Poupanca.java[Poupanca"/>
-      <bendpoints>
-      </bendpoints>
-   </relationship>
-   <relationship>
-      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
-      <sourceType="=ProjetoBanco/src<BC{Poupanca.java[Poupanca"/>
-      <targetType="=ProjetoBanco/src<BC{Conta.java[Conta"/>
-      <bendpoints>
-      </bendpoints>
-   </relationship>
-   <relationship>
-      <class="edu.buffalo.cse.green.relationship.dependency.DependencyLPart"/>
-      <sourceType="=ProjetoBanco/src<BC{Agencia.java[Agencia"/>
-      <targetType="=ProjetoBanco/src<BC{ContaCorrente.java[ContaCorrente"/>
+      <sourceType="=ProjetoBanco/src<BC{Conta.java[Conta"/>
+      <targetType="=ProjetoBanco/src<BC{Operacao.java[Operacao"/>
       <bendpoints>
       </bendpoints>
    </relationship>
@@ -92,9 +78,16 @@
       </bendpoints>
    </relationship>
    <relationship>
-      <class="edu.buffalo.cse.green.relationship.realization.RealizationPart"/>
-      <sourceType="=ProjetoBanco/src<BC{Conta.java[Conta"/>
-      <targetType="=ProjetoBanco/src<BC{ContaGenerica.java[ContaGenerica"/>
+      <class="edu.buffalo.cse.green.relationship.dependency.DependencyLPart"/>
+      <sourceType="=ProjetoBanco/src<BC{ContaCorrente.java[ContaCorrente"/>
+      <targetType="=ProjetoBanco/src<BC{Operacao.java[Operacao"/>
+      <bendpoints>
+      </bendpoints>
+   </relationship>
+   <relationship>
+      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
+      <sourceType="=ProjetoBanco/src<BC{Poupanca.java[Poupanca"/>
+      <targetType="=ProjetoBanco/src<BC{Conta.java[Conta"/>
       <bendpoints>
       </bendpoints>
    </relationship>
@@ -109,6 +102,27 @@
       <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
       <sourceType="=ProjetoBanco/src<BC{ContaCorrente.java[ContaCorrente"/>
       <targetType="=ProjetoBanco/src<BC{Conta.java[Conta"/>
+      <bendpoints>
+      </bendpoints>
+   </relationship>
+   <relationship>
+      <class="edu.buffalo.cse.green.relationship.realization.RealizationPart"/>
+      <sourceType="=ProjetoBanco/src<BC{Conta.java[Conta"/>
+      <targetType="=ProjetoBanco/src<BC{ContaGenerica.java[ContaGenerica"/>
+      <bendpoints>
+      </bendpoints>
+   </relationship>
+   <relationship>
+      <class="edu.buffalo.cse.green.relationship.dependency.DependencyLPart"/>
+      <sourceType="=ProjetoBanco/src<BC{Agencia.java[Agencia"/>
+      <targetType="=ProjetoBanco/src<BC{ContaCorrente.java[ContaCorrente"/>
+      <bendpoints>
+      </bendpoints>
+   </relationship>
+   <relationship>
+      <class="edu.buffalo.cse.green.relationship.dependency.DependencyLPart"/>
+      <sourceType="=ProjetoBanco/src<BC{Agencia.java[Agencia"/>
+      <targetType="=ProjetoBanco/src<BC{Poupanca.java[Poupanca"/>
       <bendpoints>
       </bendpoints>
    </relationship>

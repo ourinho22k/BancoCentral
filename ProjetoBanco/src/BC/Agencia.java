@@ -17,11 +17,22 @@ public class Agencia {
 	/**
 	 * Este é o numero da agenca!
 	 */
-	private int Agencia;
+//	private int Agencia;
 	
-	private int numeContas = 0;
+	private String Agencia;
 	
-	private int numPoupanca = 0;
+	public String getAgencia() {
+		return Agencia;
+	}
+
+	public void setAgencia(String agencia) {
+		this.Agencia = agencia;
+	}
+
+	private String numeContas;
+	
+	private String numPoupanca;
+	
 	
 	// Lista de Clientes (Contas da Agência)
 	// O primeiro campo (String) é o número da conta do cliente, e o segundo campo é o cliente ao qual esta conta está associada
@@ -33,14 +44,22 @@ public class Agencia {
 //	HashSet<Conta> listaContas = new HashSet<Conta>();
 	
 	/**
-	 * lista de contas (NO FORMATO HASH MAP). O primeiro campo é o número de conta, e o segundo campo é o número de cliente
+	 * lista de contas da agência(NO FORMATO HASH MAP). O primeiro campo é uma conta, e o segundo campo é o número de cliente
 	 */
-	HashMap<String, String> contas = new HashMap<>();
+	HashMap<String, Conta> contas = new HashMap<String, Conta>();
 	
+	/**
+	 * relação da lista de contas com tal cliente: o primeiro campo é o número de conta, e o segundo é o número de cliente
+	 */
+	HashMap<String, String> cclientes = new HashMap<String, String>();
 	/**
 	 * 
 	 */
-	public Agencia(int numagencia) {
+	/**
+	 * 
+	 */
+	
+	public Agencia(String numagencia) {
 		this.Agencia = numagencia;
 		// TODO Auto-generated constructor stub
 	}
@@ -51,11 +70,10 @@ public class Agencia {
 	
 
 	
-	public void criaContaCorrente(int numecliente,double valor){
-	
-		setNumeContas(); 
+	public void criaContaCorrente(String numecliente,double valor){
 		
-		String numcliente = String.valueOf(numecliente);
+//		setNumeContas(); 
+		
 		
 		ContaCorrente contCorrente = new ContaCorrente(getNumeContas(), numecliente); 
 		
@@ -67,9 +85,9 @@ public class Agencia {
 			}
 		
 		
-	public void criaPoupanca(int numecliente,double valor){
+	public void criaPoupanca(String numecliente,double valor){
 		
-		setNumPoupanca();
+//		setNumPoupanca();
 		
 		Poupanca pupanca = new Poupanca(getNumPoupanca(), numecliente);
 		
@@ -82,24 +100,24 @@ public class Agencia {
 //		return 0;
 //	}
 
-	public int getNumeContas() {
+	public String getNumeContas() {
 		
 		return numeContas;
 	}
 
 
-	public void setNumeContas() {
-		this.numeContas = numeContas++;
+	public void setNumeContas(String numCon) {
+		this.numeContas = numCon;
 	}
 
 
-	public int getNumPoupanca() {
+	public String getNumPoupanca() {
 		return numPoupanca;
 	}
 
 
-	public void setNumPoupanca() {
-		this.numPoupanca = numPoupanca++;
+	public void setNumPoupanca(String numPoup) {
+		this.numPoupanca = numPoup;
 	}
 
 	

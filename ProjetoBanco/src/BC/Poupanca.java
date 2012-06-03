@@ -9,12 +9,13 @@ package BC;
  */
 public class Poupanca extends Conta {
 	
-	public Poupanca(int numeroconta, int numerocliente) {
+	public Poupanca(String numeroconta, String numerocliente) {
 		super(numeroconta, numerocliente);
-		
+	}
+
 		
 		// TODO Auto-generated constructor stub
-	}
+	
 
 	private double juros = 0.10;
 

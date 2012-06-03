@@ -16,7 +16,7 @@ public class ClienteBancario {
 	/**
 	 * este é o numero do cliente , com este numero as contas serao localizadas
 	 */
-	private int NumCliente;
+	private String NumCliente;
 	/**
 	 * sera o endereco, opcional 
 	 */
@@ -45,12 +45,12 @@ public class ClienteBancario {
 		NomeCliente = nomeCliente;
 	}
 
-	public int getNumCliente() {
+	public String getNumCliente() {
 		return NumCliente;
 	}
 
-	public void setNumCliente(int numCliente) {
-		NumCliente = numCliente;
+	public void setNumCliente(String numCliente) {
+		this.NumCliente = numCliente;
 	}
 
 	public String getEndereco() {
@@ -96,7 +96,7 @@ public class ClienteBancario {
 	/*
 	 * construtor, exigencia minima pra um cliente estanciar um cliente nome e numero do cliente
 	 */
-	public ClienteBancario(int numCliente,String nomeCliente) {
+	public ClienteBancario(String numCliente,String nomeCliente) {
 		// TODO Auto-generated constructor stub
 		setNumCliente(numCliente);
 		setNomeCliente(nomeCliente);

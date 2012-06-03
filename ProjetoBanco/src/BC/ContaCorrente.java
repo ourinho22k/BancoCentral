@@ -11,10 +11,11 @@ import com.sun.org.apache.bcel.internal.generic.LLOAD;
  */
 public class ContaCorrente extends Conta {
 
-	public ContaCorrente(int numeroconta, int numerocliente) {
+	public ContaCorrente(String numeroconta, String numerocliente) {
 		super(numeroconta, numerocliente);
 		// TODO Auto-generated constructor stub
 	}
+
 
 	
 
@@ -44,17 +45,16 @@ public class ContaCorrente extends Conta {
 	
 
 
-	public void extrato(){
-		setTipos("extrato");
-		saque(2.00 );
-		System.out.println(imprimeExtrato());
+	public String extratos(){
 		
-	}
-	
-	public String imprimeExtrato(){
+		setTipos("extrato");
+		
+			saque(2.00 );
+		
 		return listaOperacoes.toString();
 	}
-
+	
+	
 	public double saldo(){
 		return getSaldo();
 	}

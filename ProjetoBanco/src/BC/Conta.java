@@ -18,22 +18,21 @@ public abstract class Conta implements ContaGenerica {
 	/**
 	 * este é o numero desta conta, devera ser unico em cada agencia
 	 */
-	private int NumConta;
+	private String NumConta;
 	/**
 	 * este é o numero do cliente , cada cliente tem seu Cadastro Unico ! isto relacionara o cliente com os serviço
 	 * ofericidos a ele pelo banco
 	 */
-	private int NumCliente;
+	private String NumCliente;
 	/**
 	 * hue cada conta dem que ter seu saldo !
 	 */
+	
 	private double Saldo;
 
 	private double CPMF;
 	
-	private String tipos;
-	
-
+	public String tipos;
 
 	public String getTipos() {
 		return tipos;
@@ -43,7 +42,7 @@ public abstract class Conta implements ContaGenerica {
 		this.tipos = tipos;
 	}
 
-	//	private double taxaExtra;
+	private double taxaExtra;
 //	
 //	private double juros;
 //	
@@ -62,7 +61,7 @@ public abstract class Conta implements ContaGenerica {
 //	public void setTaxaExtra(double taxaExtra) {
 //		this.taxaExtra = (taxaExtra/100);
 //	}
-
+	
 	/**
 	 * esta é uma senha para a conta so pra conta "futura implementacao"
 	 */
@@ -80,26 +79,26 @@ public abstract class Conta implements ContaGenerica {
 	/*
 	 * construtos unico que obriga a setar numero ca conta , numero do cliente e o saldo inicial
 	 */
-		public Conta(int numeroconta,int numerocliente) {
+		public Conta(String numeroconta,String numerocliente) {
 		// TODO Auto-generated constructor stub
 			setNumConta(numeroconta);
 			setNumCliente(numerocliente);
 	}
 
-	public int getNumConta() {
+	public String getNumConta() {
 		return NumConta;
 	}
 
-	public void setNumConta(int numConta) {
-		NumConta = numConta;
+	public void setNumConta(String numConta) {
+		this.NumConta = numConta;
 	}
 
-	public int getNumCliente() {
+	public String getNumCliente() {
 		return NumCliente;
 	}
 
-	public void setNumCliente(int numCliente) {
-		NumCliente = numCliente;
+	public void setNumCliente(String numCliente) {
+		this.NumCliente = numCliente;
 	}
 
 	public double getSaldo() {
@@ -150,12 +149,14 @@ public abstract class Conta implements ContaGenerica {
 	/*
 	 * verifica se tem fundos pra saques com CPMF
 	 */
-	public boolean vericaFundosCPMF(double valor){
+public boolean vericaFundosCPMF(double valor){
 		
 		
 		if (valor + (valor * getCPMF())>= getSaldo()) return true;
 		return false;
 	}
+
+	
 	
 	public boolean addOperacoes(Operacao dados){
 		
