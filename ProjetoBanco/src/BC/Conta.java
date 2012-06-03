@@ -137,12 +137,15 @@ public abstract class Conta implements ContaGenerica {
 	}
 
 	public void dePosito(double valor){
-		setTipos("deoposito");
+		
+		setTipos("deposito");
+		
 		double saldoatual = getSaldo();
 			setSaldo( saldoatual + valor);
 			
-			Operacao op = new Operacao(tipos, valor, getSaldo());
+			Operacao op = new Operacao(getTipos(), valor, getSaldo());
 		op.setData();
+		listaOperacoes.add(op);
 	}
 	/*
 	 * verifica se tem fundos pra saques com CPMF

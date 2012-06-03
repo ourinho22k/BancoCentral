@@ -18,17 +18,19 @@ public class ContaCorrente extends Conta {
 
 	
 
-	public void saque(double valorSaque, String tipos){
+	public void saque(double valorSaque){
+		
+		if (!getTipos().equals("extrato")) setTipos("saque");
 		
 		double saldoatual = getSaldo();
-		setTipos("saldo");
-//		if (tipos.equals(null))tipos = "saque";
+		
+
 		
 		if (saldoatual >= valorSaque + (valorSaque * 0.01)){
 		
 			setSaldo(saldoatual-valorSaque - (valorSaque * 0.01));
 		
-		Operacao op = new Operacao(tipos, valorSaque, getSaldo());
+		Operacao op = new Operacao(getTipos(), valorSaque, getSaldo());
 		
 			op.setData();
 				listaOperacoes.add(op);
@@ -39,9 +41,12 @@ public class ContaCorrente extends Conta {
 		
 		
 	}
+	
+
 
 	public void extrato(){
-		saque(2.00, "extrato");
+		setTipos("extrato");
+		saque(2.00 );
 		System.out.println(imprimeExtrato());
 		
 	}

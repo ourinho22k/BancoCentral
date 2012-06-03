@@ -27,8 +27,8 @@ public class TestaTudo {
 	 */
 	public static void main(String[] args) {
 		
-		Banco b = new Banco();
-		Agencia a = new Agencia(100);
+//		Banco b = new Banco();
+//		Agencia a = new Agencia(100);
 //		if(b.cadastraAgencia(2)) System.out.println("agencia cadastrada com sucesso");
 //		
 //		
@@ -53,14 +53,16 @@ public class TestaTudo {
 //		HashMap<teste ClienteBancario>  lc =new HashMap<>();
 	
 	ContaCorrente c = new ContaCorrente(555, 300);
+	
 	c.dePosito(1000);
 	System.out.println(c.getSaldo());
-	c.saque(100, null);
+	c.saque(100);
 	System.out.println(c.getSaldo());
-	c.saldo();
+	c.dePosito(200);
 	System.out.println(c.getSaldo());
+	System.out.println("----------- Extrato de Conta -----------");
 	c.extrato();
-		
+	System.out.println("----------------------------------------");
 		
 		
 		// TODO Auto-generated method stub

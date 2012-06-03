@@ -74,8 +74,8 @@ public class Operacao {
 
 	@Override
 	public String toString() {
-		return "\nEXTRATO DE CONTA"+"\nOperacao: " + getTipo() + "\nValor:"
-				+ getValor() +"\n"+ getSaldo() +"\n"+ getData() ;
+		return "\nTipo de Operacao:	" + getTipo() + "\n\nValor da Operacao:	"
+				+ getValor() +"\nSaldo Atual:		"+ getSaldo() +"\nNa Data"+ getData() ;
 	}
 
 
