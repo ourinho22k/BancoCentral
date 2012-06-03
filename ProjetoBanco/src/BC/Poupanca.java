@@ -9,10 +9,10 @@ package BC;
  */
 public class Poupanca extends Conta {
 	
-	public Poupanca(int numeroconta, int numerocliente, double valo) {
-		super(numeroconta, numerocliente, valo);
+	public Poupanca(int numeroconta, int numerocliente) {
+		super(numeroconta, numerocliente);
 		
-		super.setSaldo(addJuros(valo));
+		
 		// TODO Auto-generated constructor stub
 	}
 
@@ -56,7 +56,13 @@ public class Poupanca extends Conta {
 		
 	}
 	public void saque(double valor){
-		super.setSaldo(getSaldo()-valor);
+		if (getSaldo() >= valor){
+					
+				super.setSaldo(getSaldo()-valor);
 	}
+		else {
+			System.out.println("saldo insuficiente");
+		}
+		}
 	
 }

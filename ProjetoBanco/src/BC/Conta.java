@@ -3,6 +3,8 @@
  */
 package BC;
 
+import java.util.ArrayList;
+
 /**
  * @author fil
  *
@@ -10,7 +12,9 @@ package BC;
 public abstract class Conta implements ContaGenerica {
 
 	
-
+	ArrayList<Operacao> listaOperacoes= new ArrayList<Operacao>();
+	
+		
 	/**
 	 * este é o numero desta conta, devera ser unico em cada agencia
 	 */
@@ -27,7 +31,19 @@ public abstract class Conta implements ContaGenerica {
 
 	private double CPMF;
 	
-//	private double taxaExtra;
+	private String tipos;
+	
+
+
+	public String getTipos() {
+		return tipos;
+	}
+
+	public void setTipos(String tipos) {
+		this.tipos = tipos;
+	}
+
+	//	private double taxaExtra;
 //	
 //	private double juros;
 //	
@@ -95,22 +111,38 @@ public abstract class Conta implements ContaGenerica {
 	}
 
 	public void saque(double valor){
+		
+		setTipos("saque");
+		
 		double saldoAtual = getSaldo();
+		
 		double descontado;
+		
+		
 		if (saldoAtual >= valor ){
 			
 			descontado = saldoAtual - valor;
 			
 			setSaldo(descontado);
+			
+			Operacao op = new Operacao(tipos, valor, getSaldo());
+			
+			op.setData();
+				listaOperacoes.add(op);
+			
+			
+			
 		}
 		
 	}
 
 	public void dePosito(double valor){
-		
+		setTipos("deoposito");
 		double saldoatual = getSaldo();
 			setSaldo( saldoatual + valor);
-		
+			
+			Operacao op = new Operacao(tipos, valor, getSaldo());
+		op.setData();
 	}
 	/*
 	 * verifica se tem fundos pra saques com CPMF
@@ -120,6 +152,17 @@ public abstract class Conta implements ContaGenerica {
 		
 		if (valor + (valor * getCPMF())>= getSaldo()) return true;
 		return false;
+	}
+	
+	public boolean addOperacoes(Operacao dados){
+		
+		listaOperacoes.add(dados);
+		return true;
+		
+	}
+	
+	public void extrato(){
+		System.out.println(listaOperacoes.toString());
 	}
 
 	@Override

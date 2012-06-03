@@ -71,7 +71,7 @@ public class Agencia {
 		
 		setNumPoupanca();
 		
-		Poupanca pupanca = new Poupanca(getNumPoupanca(), numecliente, valor);
+		Poupanca pupanca = new Poupanca(getNumPoupanca(), numecliente);
 		
 //		listacontas.add(pupanca);
 	}
