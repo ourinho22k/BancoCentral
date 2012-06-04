@@ -4,31 +4,24 @@
 package BC;
 
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
- * @author fil
+ * @author 	Heryson
+ * 		&	Filipe
  *
  */
 public class Agencia {
 
 	
-	ContaGenerica conta;
+ContaGenerica conta;
+	
 	/**
-	 * Este é o numero da agenca!
+	 * Este é o numero da agencia!
 	 */
-//	private int Agencia;
-	
-	private String Agencia;
-	
-	public String getAgencia() {
-		return Agencia;
-	}
-
-	public void setAgencia(String agencia) {
-		this.Agencia = agencia;
-	}
-
+	private String numAgencia;
+		
 	private String numeContas;
 	
 	private String numPoupanca;
@@ -39,7 +32,7 @@ public class Agencia {
 	HashMap<String, ClienteBancario> clientes = new HashMap<>();
 	
 	/**
-	 * lista de contas (NO FORMATO HASH SET), aqui deve fiar todas as contas desta agencia!!
+	 * lista de contas (NO FORMATO HASH SET), aqui devem ficar todas as contas desta agencia!!
 	 */
 //	HashSet<Conta> listaContas = new HashSet<Conta>();
 	
@@ -52,53 +45,214 @@ public class Agencia {
 	 * relação da lista de contas com tal cliente: o primeiro campo é o número de conta, e o segundo é o número de cliente
 	 */
 	HashMap<String, String> cclientes = new HashMap<String, String>();
-	/**
-	 * 
-	 */
-	/**
-	 * 
-	 */
 	
+	/**
+	 * Construtor para Agência que inicia com um número de agência definido
+	 */
 	public Agencia(String numagencia) {
-		this.Agencia = numagencia;
+		this.numAgencia = numagencia;
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Construtor padrão para Agência
+	 */
 	public Agencia (){
 		
 	}
 	
-
-	
-	public void criaContaCorrente(String numecliente,double valor){
-		
-//		setNumeContas(); 
-		
-		
-		ContaCorrente contCorrente = new ContaCorrente(getNumeContas(), numecliente); 
-		
-		
-			
-//		listaContas.add(contCorrente);
-//		listacontas.put(numcliente , getNumeContas);
-		
+	/**
+	 * Cadastra uma conta para um indivíduo na agência escolhida
+	 * @param numagencia o número que definirá em qual agência será realizada a operação 
+	 * @param numcliente número que representa o cliente
+	 * @param numconta numero da conta desejado: digita-se um numero iniciando com 0 se for uma conta corrente, e com 1 se for uma poupança
+	 * @return true se foi um sucesso, e false caso contrário
+	 */
+	public boolean cadastraContaCliente (String numagencia, String numcliente, String numconta) {
+		// Se agência existir...
+		if(this.getAgencia() == numagencia){
+			// E se o cliente existir E a conta ainda não existe....
+			System.out.println("Encontrei a agência!");
+			if (this.clientes.containsKey(numcliente) && !this.contas.containsKey(numconta)){
+				System.out.println("Encontrei o cliente!");
+			// cadastre a conta do cliente
+				// o tipo de conta depende do numero de conta fornecido: se começar com 0, é conta corrente, se começar com 1, é poupança
+				System.out.println("Número de conta " + numconta + " começa com " + numconta.charAt(0));
+				if (numconta.startsWith("0")){
+					System.out.println("É uma conta corrente!");
+					Conta con = new ContaCorrente(numconta, numcliente);
+					this.contas.put(numconta, con);
+					System.out.println("conta adicionada ao map de contas!");
+						this.cclientes.put(numconta, numcliente);
+						Set<String> numcontas = this.cclientes.keySet();
+						System.out.println("Contas armazenadas: " + numcontas);
+						System.out.println("parabéns, agora voce cadastrou a conta " + con.getNumConta() + " para o cliente: " + this.clientes.get(numcliente).getNomeCliente());
+						return true;
+					
+				}
+				else if (numconta.startsWith("1")){
+					System.out.println("É uma poupanca!");
+					Conta con = new Poupanca(numconta, numcliente);
+					this.contas.put(numconta, con);
+					this.cclientes.put(numconta, numcliente);
+						System.out.println("parabéns, agora voce cadastrou a conta " + con.getNumConta() + " para o cliente: " + this.clientes.get(numcliente).getNomeCliente());
+						return true;
+				}
 			}
-		
-		
-	public void criaPoupanca(String numecliente,double valor){
-		
-//		setNumPoupanca();
-		
-		Poupanca pupanca = new Poupanca(getNumPoupanca(), numecliente);
-		
-//		listacontas.add(pupanca);
+			
+		}
+		// Senão, desista
+				System.out.println("Nao encontrei a agência. Desisto.");
+				return false;
 	}
+	
+	/**
+	 * Exclui uma conta de um cliente em específico de uma determinada agência
+	 * @param numagencia número da agência onde será realizada a operação
+	 * @param numcliente número do cliente o qual terá uma conta removida
+	 * @param numconta número da conta que será removida
+	 * @return retorna true se conseguir remover com sucesso, e false caso contrário
+	 */
+	public boolean excluiContaCliente (String numagencia, String numcliente, String numconta) {
+		// Se agência existir...
+		if(this.getAgencia() == numagencia){
+			// E se o cliente existir E a conta existir....
+			System.out.println("Encontrei a agência!");
+			if (this.clientes.containsKey(numcliente) && this.contas.containsKey(numconta)){
+				System.out.println("Encontrei o cliente e sua conta!");
+			// remova esta conta do cliente
+				this.contas.remove(numconta);
+				this.cclientes.remove(numconta);
+				return true;
+			}
+		}
+		// Senão, desista
+		System.out.println("Nao encontrei a agência. Desisto.");
+		return false;
+	}
+			
+	/**
+	 * Cadastra um cliente na agência desejada
+	 * @param numagencia número da agência onde será realizada a operação
+	 * @param numcliente número desejado para o cliente
+	 * @param nome nome do indivíduo
+	 * @return retorna um cliente (embora seja inútil - poderia retornar um boolean)
+	 */
+	public ClienteBancario cadastraCliente (String numagencia, String numcliente, String nome) {
+		
+		ClienteBancario c = new ClienteBancario(numcliente, nome);
+		
+			// Se agência existir...
+			if(this.getAgencia() == numagencia){
+				// E se o cliente não existir....
+				if (!this.clientes.containsKey(numcliente)){
+					// cadastre o cliente
+					this.clientes.put(numcliente, c);
+						System.out.println("parabéns, agora voce cadastrou o cliente: " + this.clientes.get(numcliente).getNomeCliente());
+				return c;
+			}
+			// Senão, desista
+			else return null;
+		}
+		else return null;
+	}
+	
+	/**
+	 * Remove um cliente, e todas as contas associadas a este, de uma agência
+	 * @param numagencia número da agência onde será feita a operação
+	 * @param numcliente número do cliente o qual se deseja excluir
+	 * @return retorna true em caso de sucesso, e false caso contrário
+	 */
+	public boolean excluiCliente (String numagencia, String numcliente) {
+		// Se agência existir...
+		if(this.getAgencia() == numagencia){
+			// E se o cliente existir....
+			if (this.clientes.containsKey(numcliente)){
+				if (this.cclientes.containsValue(numcliente)) {
+					System.out.println("Este cliente ainda tem contas. Nao se pode remover um cliente com contas.");
+					return false;
+				}
+				else{
+				Set<String> numcontas = this.cclientes.keySet();
+//				for(String vassoura : numcontas){
+//					System.out.println("Procurando pela conta:" + vassoura);
+//					if (this.cclientes.containsKey(vassoura) && this.cclientes.get(vassoura).equalsIgnoreCase(numcliente)){
+//						System.out.println("achei a conta.");
+//						this.cclientes.remove(vassoura);
+//						System.out.println("removi a conta da lista de contas de clientes");
+//						this.contas.remove(vassoura);
+//						System.out.println("removi a conta da lista de contas da agencia");
+//						System.out.println(this.cclientes.toString());
+//					}
+//				}
+				// remova o cliente
+				this.clientes.remove(numcliente);
+				System.out.println("Cliente removido com sucesso. ");
+				return true;
+				}
+			}
+			// Senão, desista
+			else return false;
+		}
+		else return false;
+	}
+	
+	/**
+	 * Pesquisar as contas de um determinado indivíduo em uma agência bem definida
+	 * @param numagencia
+	 * @param numcliente
+	 */
+	public void pesquisaCliente (String numagencia, String numcliente){
+		// se a agência existe...
+		if (this.getAgencia() == numagencia){
+			System.out.println("achei a agencia, e seu numero eh: " + this.getAgencia());
+			// Se o cliente existe na agência E há contas desse cliente 
+			Set<String> numcontas = this.cclientes.keySet();
+			System.out.println("Contas armazenadas: " + numcontas);
+			if (this.clientes.containsKey(numcliente) && this.cclientes.containsValue(numcliente)){
+				for(String vassoura : numcontas){
+					System.out.println("Procurando pela conta:" + vassoura);
+					if (this.cclientes.containsKey(vassoura) && this.cclientes.get(vassoura).equalsIgnoreCase(numcliente)){
+
+						System.out.println("conta: " + vassoura);
+					}
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Pesquisa os dados de um cliente a partir de seu número, em uma agência
+	 * @param numagencia número da agência de onde se deseja realizar a pesquisa
+	 * @param numcliente número do cliente desejado
+	 * @return retorna true caso consiga encontrar algo, e false caso contrário
+	 */
+public boolean pesquisaConta(String numagencia, String numcliente){
+	// Se a agência existe
+		if (this.getAgencia() == numagencia){
+			System.out.println("contém esta agência!");
+			// Se esta agência contém este cliente
+			if (this.clientes.containsKey(numcliente)){
+				System.out.println("contem este cliente!");
+				System.out.println("Cliente:" + this.clientes.get(numcliente).getNomeCliente());
+				return true;
+			}
+		}
+		return false;
+	}
+
+
 	/**
 	 * 
 	 */
-//	public boolean CriaConta(int NumCliente, float Deposito1, int NumConta) {
-//		return 0;
-//	}
+public String getAgencia() {
+	return numAgencia;
+}
+
+public void setAgencia(String agencia) {
+	this.numAgencia = agencia;
+}
+
 
 	public String getNumeContas() {
 		
@@ -120,5 +274,6 @@ public class Agencia {
 		this.numPoupanca = numPoup;
 	}
 
-	
+		
+	 
 }

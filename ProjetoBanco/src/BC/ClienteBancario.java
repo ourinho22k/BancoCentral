@@ -10,7 +10,7 @@ package BC;
 public class ClienteBancario {
 
 	/**
-	 * nome do infitete do cliente do banco
+	 * Nome do cliente do banco
 	 */
 	private String NomeCliente;
 	/**
