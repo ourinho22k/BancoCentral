@@ -14,7 +14,7 @@ public abstract class Conta implements ContaGenerica {
 	
 	ArrayList<Operacao> listaOperacoes= new ArrayList<Operacao>();
 	
-		
+	
 	/**
 	 * este é o numero desta conta, devera ser unico em cada agencia
 	 */
@@ -33,28 +33,17 @@ public abstract class Conta implements ContaGenerica {
 	private double CPMF;
 	
 	public String tipos;
-
-	public String getTipos() {
-		return tipos;
-	}
-
-	public void setTipos(String tipos) {
-		this.tipos = tipos;
-	}
-
+	
 	private double taxaExtra;
-//	
+	
+	/**
+	 * esta é uma senha para a conta so pra conta "futura implementacao"
+	 */
+	private String senha = "111";
+		
 //	private double juros;
 //	
-	public double getCPMF() {
-		return CPMF;
-	}
-
-	public void setCPMF(double cPMF) {
-		CPMF = (cPMF/100);
-	}
-
-//	public double getTaxaExtra() {
+	//	public double getTaxaExtra() {
 //		return taxaExtra;
 //	}
 //
@@ -62,12 +51,24 @@ public abstract class Conta implements ContaGenerica {
 //		this.taxaExtra = (taxaExtra/100);
 //	}
 	
-	/**
-	 * esta é uma senha para a conta so pra conta "futura implementacao"
-	 */
-		private String senha;
 	
+		
+	public double getCPMF() {
+		return CPMF;
+	}
+
+	public void setCPMF(double cPMF) {
+		CPMF = (cPMF/100);
+	}
 	
+	public String getTipos() {
+		return tipos;
+	}
+
+	public void setTipos(String tipos) {
+		this.tipos = tipos;
+	}
+		
 	public String getSenha() {
 		return senha;
 	}
@@ -79,7 +80,7 @@ public abstract class Conta implements ContaGenerica {
 	/*
 	 * construtos unico que obriga a setar numero ca conta , numero do cliente e o saldo inicial
 	 */
-		public Conta(String numeroconta,String numerocliente) {
+	public Conta(String numeroconta,String numerocliente) {
 		// TODO Auto-generated constructor stub
 			setNumConta(numeroconta);
 			setNumCliente(numerocliente);
@@ -146,18 +147,17 @@ public abstract class Conta implements ContaGenerica {
 		op.setData();
 		listaOperacoes.add(op);
 	}
-	/*
-	 * verifica se tem fundos pra saques com CPMF
+	
+	/**
+	 *  verifica se tem fundos pra saques com CPMF
 	 */
-public boolean vericaFundosCPMF(double valor){
+	public boolean vericaFundosCPMF(double valor){
 		
 		
 		if (valor + (valor * getCPMF())>= getSaldo()) return true;
 		return false;
 	}
 
-	
-	
 	public boolean addOperacoes(Operacao dados){
 		
 		listaOperacoes.add(dados);
@@ -165,8 +165,9 @@ public boolean vericaFundosCPMF(double valor){
 		
 	}
 	
-	public void extrato(){
-		System.out.println(listaOperacoes.toString());
+	public String extrato(){
+		
+		return listaOperacoes.toString();
 	}
 
 	@Override
@@ -174,5 +175,4 @@ public boolean vericaFundosCPMF(double valor){
 		return "Conta [NumConta=" + NumConta + ", NumCliente=" + NumCliente
 				+ ", Saldo=" + Saldo + ", CPMF=" + CPMF + "]";
 	}
-	
-}
+	}
