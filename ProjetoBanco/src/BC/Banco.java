@@ -9,6 +9,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.sun.org.apache.bcel.internal.generic.RETURN;
+
 
 /**
  * @author 	Heryson
@@ -35,8 +37,8 @@ public class Banco {
 	public void setNumDASagencias() {
 		
 	
-		if (getNumDASagencias() > 5){ 
-			
+		if (getNumDASagencias() < 5){ 
+						
 			this.numDASagencias = getNumDASagencias()+10;
 		}
 		else{
@@ -51,7 +53,7 @@ public class Banco {
 	 */
 	public String getNumeroAtualParaAgencias(){
 		
-		String numAgencia =  new Integer(getNumDASagencias()).toString();
+		String numAgencia =  Integer.toString(getNumDASagencias());
 		
 		return numAgencia;
 		
@@ -85,10 +87,14 @@ public class Banco {
 	 * retorna trrue se duto bem e false se deu errado 
 	 */
 	public boolean cadastraAgencia(){
-		String numagencia;
+		
+		
 //		if(numagencia.equals(null)||numagencia.equals("")||numagencia.equals(" ")){
-//			setNumDASagencias();
-			numagencia = getNumeroAtualParaAgencias();
+			
+		setNumDASagencias();	
+		String numagencia = getNumeroAtualParaAgencias();
+			
+			System.out.println(numagencia);
 //		}
 //		else {
 		if(!agencias.containsKey(numagencia))	{
@@ -96,10 +102,10 @@ public class Banco {
 			agencias.put(numagencia, a);
 			
 			return true;
-		}
-		else return false;
 //		}
-//		return false;
+//		else return false;
+		}
+		return false;
 	}
 	
 	/**
@@ -170,7 +176,7 @@ public class Banco {
 	 * EXP: 1003 é uma  poupanca , 0266 é uma comta corrente.
 	 * @param numAgencia o numero da agendcia onde tera a conta 
 	 * @param numCliente o numero do cliente 
-	 * @param munConta o numero da dada conta
+	 * @param numConta o numero da dada conta
 	 * @return true se deu certo false caso contrario 
 	 */
 	public boolean cadatraContaEmAgencia(String numAgencia, String numCliente, String numConta){
@@ -279,8 +285,8 @@ public class Banco {
 		
 		if(existAgencia(numAgencia)){
 			
-			agencias.get(numAgencia).pesquisaCliente(numAgencia, numCliente);
-			return true;
+			 agencias.get(numAgencia).pesquisaCliente(numAgencia, numCliente);
+			
 		}
 		
 		return false;

@@ -31,10 +31,19 @@ public class TestaTudo {
 		
 		
 		Banco b = new Banco();
-		System.out.println(b.getNumDASagencias());
-		b.setNumDASagencias();
-		System.out.println(b.getNumDASagencias());
 		
+		Menu menu = new Menu(b);
+		
+		menu.mostraMenu();
+		
+//		System.out.println(b.getNumDASagencias());
+//		b.setNumDASagencias();
+//		System.out.println(b.getNumDASagencias());
+//		System.out.println(b.getNumeroAtualParaAgencias());
+//		b.setNumDASagencias();
+//		
+//		System.out.println(b.getNumDASagencias());
+//		System.out.println(b.getNumeroAtualParaAgencias());
 		
 //		System.out.println(b.cadastraAgencia("10"));
 //		System.out.println( b.existAgencia("10"));
