@@ -157,7 +157,13 @@ public class Banco {
 	
 	}
 
-	
+	/**
+	 * Saque é o decrecimo de valores em saldo da conta
+	 * @param numAgencia numaro ca agencia a quem a conta pertence
+	 * @param numConta numero da conta em si
+	 * @param valor o valor aser decrecido do saldo 
+	 * @return true se tudo bem false caso contrario
+	 */
 	public boolean saqueConta(String numAgencia, String numConta, double valor){
 	
 		if(agencias.containsKey(numAgencia)&& agencias.get(numAgencia).contas.containsKey(numConta)) return agencias.get(numConta).saqueDaConta(numConta, valor);
@@ -166,7 +172,12 @@ public class Banco {
 		
 	}
 
-	
+	/**
+	 * retorna o saldo de dada conta em uma determinada agencia
+	 * @param numAgencia numero da agencia a que a conta pertense
+	 * @param numConta numero da conta
+	 * @return retorna uma String com o saldo da conta
+	 */
 	public String saldoConta(String numAgencia, String numConta){
 		
 		if (agencias.containsKey(numAgencia)&& agencias.get(numAgencia).contas.containsKey(numConta)) return agencias.get(numAgencia).saldoDaconta(numConta);
@@ -175,7 +186,12 @@ public class Banco {
 		
 	}
 	
-	
+	/**
+	 * Sera devolvido uma string com todo movimento de dada conta 
+	 * @param numAgencia numero da agencia a que a conta pertence
+	 * @param numConta numero da conta 
+	 * @return retorna uma String com valores do movimento financeiro da conta
+	 */
 	public String extratoConta(String numAgencia, String numConta){
 		
 		if (agencias.containsKey(numAgencia) && agencias.get(numAgencia).contas.containsKey(numConta)) return agencias.get(numAgencia).extratoConta(numConta);
@@ -184,6 +200,11 @@ public class Banco {
 		
 	}
 	
+	/**
+	 * examina se a agencia existe 
+	 * @param numAgencia o numero da agencia a ser checada 
+	 * @return retorna true se exite e false se nao exitir
+	 */
 	public boolean existAgencia(String numAgencia){
 		
 		if ( agencias.containsKey(numAgencia)) return true;
@@ -191,6 +212,12 @@ public class Banco {
 		return false;
 	}
 	
+	/**
+	 *  checa que o a agencia exite e se nesta agencia exite uma conta com dado numero 
+	 * @param numAgencia numeo da agencia
+	 * @param numConta numero da conta
+	 * @return retona True caso exista e false caso ano exita
+	 */
 	public boolean existeConta(String numAgencia, String numConta){
 		
 		if (agencias.containsKey(numAgencia)&& agencias.get(numAgencia).contas.containsKey(numConta))return true;
