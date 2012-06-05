@@ -59,7 +59,7 @@ public class Poupanca extends Conta {
 	public void saque(double valor){
 		if (getSaldo() >= valor){
 					
-				super.setSaldo(getSaldo()-valor);
+				super.saque(valor);
 	}
 		else {
 			System.out.println("saldo insuficiente");
