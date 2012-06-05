@@ -121,14 +121,16 @@ public class Banco {
 	public boolean cadastraClienteEmAgencia(String numagencia, String numcliente, String nome){
 	
 	
-		if(existAgencia(numagencia)) return agencias.get(numagencia).cadastraCliente(numagencia, numcliente, nome);
+		if(existAgencia(numagencia)) { agencias.get(numagencia).cadastraCliente(numagencia, numcliente, nome);
+		return	true;	};
 			
 	System.out.println("So negou ");
 	return false;
 }
 	
 	/**
-	 * Cadastra a conta em uma agencia determinada
+	 * Cadastra a conta em uma agencia determinada OBS: contas com inicio 0 é uma conta corrente com inicio 1 é uma poupança
+	 * EXP: 1003 é uma  poupanca , 0266 é uma comta corrente.
 	 * @param numAgencia o numero da agendcia onde tera a conta 
 	 * @param numCliente o numero do cliente 
 	 * @param munConta o numero da dada conta
@@ -136,7 +138,12 @@ public class Banco {
 	 */
 	public boolean cadatraContaEmAgencia(String numAgencia, String numCliente, String munConta){
 		
-		if(existeConta(numAgencia, munConta) )	return	agencias.get(numAgencia).cadastraContaCliente(numAgencia, numCliente, munConta);
+		if(!existeConta(numAgencia, munConta) ){
+			agencias.get(numAgencia).cadastraContaCliente(numAgencia, numCliente, munConta);
+		
+		return true;
+		
+		}
 		
 		return false;
 			
@@ -166,7 +173,10 @@ public class Banco {
 	 */
 	public boolean saqueConta(String numAgencia, String numConta, double valor){
 	
-		if(agencias.containsKey(numAgencia)&& agencias.get(numAgencia).contas.containsKey(numConta)) return agencias.get(numConta).saqueDaConta(numConta, valor);
+		if(existAgencia(numAgencia) && existeConta(numAgencia, numConta)) {
+			agencias.get(numAgencia).saqueDaConta(numConta, valor);
+			return true;
+		}
 		
 		return false;
 		
