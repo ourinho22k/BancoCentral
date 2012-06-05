@@ -42,14 +42,14 @@ public class Banco {
 	/**
 	 * cadastrar agência
 	 */
-	public Agencia cadastraAgencia(String numagencia){
+	public boolean cadastraAgencia(String numagencia){
 
 		if(!agencias.containsKey(numagencia))	{
 			Agencia a = new Agencia(numagencia);
 			agencias.put(numagencia, a);
-			return a;
+			return true;
 		}
-		else return null;
+		else return false;
 	}
 	
 	/**
@@ -75,7 +75,7 @@ public class Banco {
 	
 	/**
 	* Apaga o Clinete do bando da Lista do banco 
-	* @return
+	* @return true se cliente excluido false caso contrario
 	*/
 	public boolean delClienteLisataDoBanco(String numcliente, String nome ){
 	
@@ -101,9 +101,9 @@ public class Banco {
 	 * @param nomeCliente
 	 * @return
 	 */
-	public String pesquisaCliente(String nomeCliente){
+	public String pesquisaNomeCliente(String nomeCliente){
 	
-		//fazer depois
+		//if(listaClienteDoBanco.containsKey(key)
 	
 		
 	
@@ -120,31 +120,82 @@ public class Banco {
 	 */
 	public boolean cadastraClienteEmAgencia(String numagencia, String numcliente, String nome){
 	
-	if(!agencias.containsKey(numagencia))	{
-			
-		if(agencias.get(numagencia).cadastraCliente(numagencia, numcliente, nome)) return true;
-			else {
-				
-				return false;	
-		
-			}
-	}
 	
+		if(existAgencia(numagencia)) return agencias.get(numagencia).cadastraCliente(numagencia, numcliente, nome);
+			
+	System.out.println("So negou ");
 	return false;
 }
-
-//	public String imprimeConta(String numConta, String numAgencia){
-//	
-//	return agencias.get(numAgencia).imprimeDadosDaConta(numConta);
-//	}
 	
-//	public String imprimeListaDoCliente(){
-//		
-//		listaClienteDoBanco.toString();
-//		
-//		
-//		return null;
-//				
-//	}
+	/**
+	 * Cadastra a conta em uma agencia determinada
+	 * @param numAgencia o numero da agendcia onde tera a conta 
+	 * @param numCliente o numero do cliente 
+	 * @param munConta o numero da dada conta
+	 * @return true se deu certo false caso contrario 
+	 */
+	public boolean cadatraContaEmAgencia(String numAgencia, String numCliente, String munConta){
+		
+		if(existeConta(numAgencia, munConta) )	return	agencias.get(numAgencia).cadastraContaCliente(numAgencia, numCliente, munConta);
+		
+		return false;
+			
+	}
+	
+	/**
+	 * deposida o valor em uma agencia e uma conta determinada pelos valores de entrada
+	 * @param numAgencia é o numero agencia a quem a conta pertense
+	 * @param numContada numero da conta a ser acrecida o saldo 
+	 * @param valor o valor a ser creditado na conta
+	 * @return True se tudo deu certo falce caso contrario 
+	 */
+	public boolean depositoConta(String numAgencia, String numConta, double valor){
+		
+		if ( agencias.containsKey(numAgencia) && agencias.get(numAgencia).contas.containsKey(numConta))return agencias.get(numAgencia).depositoEmConta(numConta, valor);
+		
+		return false;
+	
+	}
 
+	
+	public boolean saqueConta(String numAgencia, String numConta, double valor){
+	
+		if(agencias.containsKey(numAgencia)&& agencias.get(numAgencia).contas.containsKey(numConta)) return agencias.get(numConta).saqueDaConta(numConta, valor);
+		
+		return false;
+		
+	}
+
+	
+	public String saldoConta(String numAgencia, String numConta){
+		
+		if (agencias.containsKey(numAgencia)&& agencias.get(numAgencia).contas.containsKey(numConta)) return agencias.get(numAgencia).saldoDaconta(numConta);
+		
+		return null;
+		
+	}
+	
+	
+	public String extratoConta(String numAgencia, String numConta){
+		
+		if (agencias.containsKey(numAgencia) && agencias.get(numAgencia).contas.containsKey(numConta)) return agencias.get(numAgencia).extratoConta(numConta);
+		
+		return numConta;
+		
+	}
+	
+	public boolean existAgencia(String numAgencia){
+		
+		if ( agencias.containsKey(numAgencia)) return true;
+		
+		return false;
+	}
+	
+	public boolean existeConta(String numAgencia, String numConta){
+		
+		if (agencias.containsKey(numAgencia)&& agencias.get(numAgencia).contas.containsKey(numConta))return true;
+	
+		return false;
+	}
+	
 }

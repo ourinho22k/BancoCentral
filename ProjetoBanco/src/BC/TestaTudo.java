@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -29,14 +31,39 @@ public class TestaTudo {
 		
 		
 		Banco b = new Banco();
+		
+		
 		System.out.println(b.cadastraAgencia("10"));
-		System.out.println( !b.agencias.containsKey("10"));
-		System.out.println( !b.agencias.containsKey("11"));
+		System.out.println( b.existAgencia("10"));
+		System.out.println( b.existAgencia("11"));
+		System.out.println("rep se agencia existe");
+		System.out.println(b.existAgencia("10"));
+		System.out.println(b.cadastraClienteEmAgencia("10", "200", "vai filhada mae"));
+		System.out.println(b.cadatraContaEmAgencia("10", "200", "0103"));
+		
+//		o , "Filipe"));
+//		Set set = b.agencias.keySet();
+//
+//        // Iterate over the Set to see what it contains.
+//        Iterator iter = set.iterator();
+//        while (iter.hasNext())
+//        {
+//            Object o = iter.next();
+//            System.out.println("keySet: " + o.toString());
+//        }
 	
-//		System.out.println(b.("500", "Peidro"));
-//		System.out.println(b.cadastraClienteNobanco("600", "Filipe"));
-//		System.out.println(b.cadastraClienteNobanco("700", "Chico"));
-//		System.out.println(b.cadastraClienteNobanco("800", "Pereir"));
+		
+//		Set set1 = b.listaClienteDoBanco.keySet();
+//
+//        // Iterate over the Set to see what it contains.
+//        Iterator iter1 = set1.iterator();
+//        while (iter1.hasNext())
+//        {
+//            Object c = iter1.next();
+//            System.out.println("keySet: " + c.toString());
+//        }
+
+		
 //		System.out.println(b.listaClienteDoBanco.get("500"));
 //		System.out.println(b.listaClienteDoBanco.get("600"));
 //		System.out.println(b.listaClienteDoBanco.get("700"));
@@ -119,7 +146,16 @@ public class TestaTudo {
 //	c.extrato();
 //	System.out.println("----------------------------------------");
 //		
-		
+		 // Create a Set with the keys in the HashMap.
+//        Set set = b.listaClienteDoBanco.keySet();
+//
+//        // Iterate over the Set to see what it contains.
+//        Iterator iter = set.iterator();
+//        while (iter.hasNext())
+//        {
+//            Object o = iter.next();
+//            System.out.println("keySet: " + o.toString());
+//        }
 		// TODO Auto-generated method stub
 
 	}

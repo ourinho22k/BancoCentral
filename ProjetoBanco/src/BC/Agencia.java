@@ -247,21 +247,27 @@ public void pesquisaCliente (String numagencia, String numcliente){
  * @param numcliente número do cliente desejado
  * @return retorna true caso consiga encontrar algo, e false caso contrário
  */
-public boolean pesquisaConta(String numagencia, String numcliente){
+public boolean pesquisaConta( String numcliente){
 // Se a agência existe
-	if (this.getAgencia() == numagencia){
-		System.out.println("contém esta agência!");
+//	if (this.getAgencia() == numagencia){
+//		System.out.println("contém esta agência!");
 		// Se esta agência contém este cliente
 		if (this.clientes.containsKey(numcliente)){
 			System.out.println("contem este cliente!");
 			System.out.println("Cliente:" + this.clientes.get(numcliente).getNomeCliente());
 			return true;
 		}
-	}
+//	}
 	return false;
 }
 
-public boolean depoditoEmConta( String numDaConta, String numCliente, double valor){
+/**
+ * Deposida na conta deste numero acrecenta no saldo  
+ * @param numDaConta numero da conta que sera creditado o valor 
+ * @param valor o valor que sera criditado 
+ * return retona true se operacao for feita e false caso contrario
+ */
+public boolean depositoEmConta( String numDaConta , double valor){
 	
 //	if (pesquisaConta(numAgencia, numCliente)){
 		
@@ -272,8 +278,14 @@ public boolean depoditoEmConta( String numDaConta, String numCliente, double val
 	
 	return true;
 	
-}
+	}
 
+/**
+ * Saque ou retirada da conta deste numero decrece o saldo 	
+ * @param numDaConta : este é o numero da conta que sera faita a operacoa 
+ * @param valor : o valor que sera retirado da conta
+ * @return true se ocorreu tudo bem , false caso contrario
+ */
 public boolean saqueDaConta(String numDaConta, double valor){
 	
 	contas.get(numDaConta).saque(valor);
@@ -281,13 +293,13 @@ public boolean saqueDaConta(String numDaConta, double valor){
 	return false;
 }
 
-public String imprimeDadosDaConta(String NumConta){
-	
-	return contas.get(NumConta).toString();
-		
-}
-
-public boolean cadastraSenhaCienteCnta(String numConta, String senha){
+/**
+ * Cadastra ou recadastra a senha do cliente OBS: senha default :111
+ * @param numConta o numero da conta que a senha ira ser cadastrada ou re cadastrada 
+ * @param senha esta é a senha 
+ * @return true se tudo correu bem false caso contrario
+ */
+public boolean cadastraSenhaCienteConta(String numConta, String senha){
 	
 	contas.get(numConta).setSenha(senha);
 	
@@ -295,11 +307,49 @@ public boolean cadastraSenhaCienteCnta(String numConta, String senha){
 	
 }
 
+/**
+ * redotna uma string com o extrato desta conta 
+ * @param numConta o numero da contas a ser impressa
+ * @return string com o movimento finaceiro da conta 
+ */
 public String extratoConta(String numConta){
 	
 	return contas.get(numConta).extrato();
 	
+}
+
+/**
+ * Retona uma string da conta 
+ * @param numConta o numero da conta a ser de
+ * @return
+ */
+public String dadosDaConta(String numConta){
 	
+	contas.get(numConta).toString();
+	
+	return numConta;
+	
+}
+/**
+ * retona uma string com o saldo da conta
+ * @param numConta é o numero da conta a ser mostrad o saldo 
+ * @return string
+ */
+public String saldoDaconta(String numConta){
+	
+	double convert=contas.get(numConta).getSaldo(); 
+	String conv = Double.toString(convert);
+	return conv;
+	
+	
+}
+
+@Override
+public String toString() {
+	return "Agencia [conta=" + conta.toString() + ", numAgencia=" + numAgencia
+			+ ", numeContas=" + numeContas + ", numPoupanca=" + numPoupanca
+			+ ", clientes=" + clientes.toString() + ", contas=" + contas + ", cclientes="
+			+ cclientes.toString() + "]";
 }
  
 }
