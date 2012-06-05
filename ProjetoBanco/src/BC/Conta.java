@@ -73,8 +73,14 @@ public abstract class Conta implements ContaGenerica {
 		return senha;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public boolean setSenha(String senha,String novaSenha) {
+		
+		if (getSenha().equals(novaSenha)){
+			this.senha = senha;
+			return true;
+		}
+		
+		return false;
 	}
 
 	/*

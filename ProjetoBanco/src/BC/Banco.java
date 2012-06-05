@@ -16,13 +16,54 @@ import java.util.Set;
  */
 public class Banco {
 	
+	/**
+	 * Numero que fornesse os numeros das agencias 
+	 */
+	private int numDASagencias;
 	
+	/**
+	 * Get do numro das agencias
+	 * @return retorna um inteiro com numero as agencias
+	 */
+	public int getNumDASagencias() {
+		
+		return numDASagencias;
+	}
+	/**
+	 * seta o numero da agencia + 5;
+	 */
+	public void setNumDASagencias() {
+		
+	
+		if (getNumDASagencias() > 5){ 
+			
+			this.numDASagencias = getNumDASagencias()+10;
+		}
+		else{
+			
+			this.numDASagencias = getNumDASagencias()+5;
+		}
+	}
+	
+	/**
+	 * transforma o numrdo atual para as  agencias em uma strig para serem suportadas pelo programa
+	 * @return
+	 */
+	public String getNumeroAtualParaAgencias(){
+		
+		String numAgencia =  new Integer(getNumDASagencias()).toString();
+		
+		return numAgencia;
+		
+		
+	}
+
 	/**
 	  * Lista de agências do Banco
 	  * O primeiro campo (String) é o número da agência, e o segundo campo (Agencia) é a agência em si
 	  */
 	 
-	 HashMap<String, Agencia> agencias = new HashMap<String, Agencia>();
+	protected HashMap<String, Agencia> agencias = new HashMap<String, Agencia>();
 	 
 	 
 	 /**
@@ -30,7 +71,7 @@ public class Banco {
 	  * O primeiro campo (String) é o número da agência, e o segundo campo (Agencia) é a agência em si
 	  */
 	 
-	 HashMap<String, ClienteBancario> listaClienteDoBanco = new HashMap<String, ClienteBancario>();
+	protected HashMap<String, ClienteBancario> listaClienteDoBanco = new HashMap<String, ClienteBancario>();
 	
 	/**
 	 * Construtor Banco
@@ -40,16 +81,25 @@ public class Banco {
 	}
 
 	/**
-	 * cadastrar agência
+	 * cadastrar agência, recebendo um valo, se na receber fara automaticamente
+	 * retorna trrue se duto bem e false se deu errado 
 	 */
-	public boolean cadastraAgencia(String numagencia){
-
+	public boolean cadastraAgencia(){
+		String numagencia;
+//		if(numagencia.equals(null)||numagencia.equals("")||numagencia.equals(" ")){
+//			setNumDASagencias();
+			numagencia = getNumeroAtualParaAgencias();
+//		}
+//		else {
 		if(!agencias.containsKey(numagencia))	{
 			Agencia a = new Agencia(numagencia);
 			agencias.put(numagencia, a);
+			
 			return true;
 		}
 		else return false;
+//		}
+//		return false;
 	}
 	
 	/**
@@ -96,20 +146,7 @@ public class Banco {
 				}
 	}
 
-	/**
-	 * implementa depois
-	 * @param nomeCliente
-	 * @return
-	 */
-	public String pesquisaNomeCliente(String nomeCliente){
 	
-		//if(listaClienteDoBanco.containsKey(key)
-	
-		
-	
-	return nomeCliente;
-	
-}
 
 	/**
 	 * Cadastra o Cliente do Banco na dada agencia (se a agencia exixtir)
@@ -136,10 +173,10 @@ public class Banco {
 	 * @param munConta o numero da dada conta
 	 * @return true se deu certo false caso contrario 
 	 */
-	public boolean cadatraContaEmAgencia(String numAgencia, String numCliente, String munConta){
+	public boolean cadatraContaEmAgencia(String numAgencia, String numCliente, String numConta){
 		
-		if(!existeConta(numAgencia, munConta) ){
-			agencias.get(numAgencia).cadastraContaCliente(numAgencia, numCliente, munConta);
+		if(!existeConta(numAgencia, numConta) ){
+			agencias.get(numAgencia).cadastraContaCliente(numAgencia, numCliente, numConta);
 		
 		return true;
 		
@@ -235,4 +272,91 @@ public class Banco {
 		return false;
 	}
 	
+	/**
+	 * pesquisa cliente em uma agencia
+	 */
+	public boolean pesquisaClienteEmagencia(String numAgencia, String numCliente){
+		
+		if(existAgencia(numAgencia)){
+			
+			agencias.get(numAgencia).pesquisaCliente(numAgencia, numCliente);
+			return true;
+		}
+		
+		return false;
+		
+	}
+	
+	/**
+	 * exclui o cliente de uma determinada agencia
+	 * @param numAgencia numero da agencia 
+	 * @param numCliente numero do cliente a cer excluido
+	 * @return retona true se ocorreu tudo bem e false casocontrario
+	 */
+	public boolean excluirCienteDaAgendia(String numAgencia, String numCliente){
+		
+		if (existAgencia(numAgencia)){
+		agencias.get(numAgencia).excluiCliente(numAgencia, numCliente);
+		return true;
+		}
+		return false;
+		
+	}
+	
+	/**
+	 * Exclui uma determinada conta de um cliente da agencia
+	 * @param numAgencia numero da agencia 
+	 * @param numCliente numero da do cliente 
+	 * @param numConta numero da conta a ser excluida
+	 * @return
+	 */
+	public boolean excluirContaDaAgencia(String numAgencia,String numCliente,String numConta){
+		
+		if(existeConta(numAgencia, numConta)){
+			agencias.get(numAgencia).excluiContaCliente(numAgencia, numCliente, numConta);
+		
+			return true;
+		}
+		
+		return false;
+				
+	}
+	
+	
+	public boolean pesquisaContaNaAgencia(String numAgencia, String numCliente){
+		
+		
+		if (existeConta(numAgencia, numCliente)){
+		 
+			agencias.get(numAgencia).pesquisaConta(numAgencia,numCliente);
+		 
+			return true;
+		}
+		return false;
+		
+	}
+	
+	public boolean alterarSenhaConta(String numAgencia,String numConta, String senha, String novaSenha){
+		
+		if(existeConta(numAgencia, numConta)){
+			agencias.get(numAgencia).alteraSenhaConta(numConta, senha, novaSenha);
+			
+				return true;
+		}
+		return false;
+	}
+//	/**
+//	 * implementa depois
+//	 * @param nomeCliente
+//	 * @return
+//	 */
+//	public String pesquisaNomeCliente(String nomeCliente){
+//	
+//		//if(listaClienteDoBanco.containsKey(key)
+//	
+//		
+//	
+//	return nomeCliente;
+//	
+//}
 }

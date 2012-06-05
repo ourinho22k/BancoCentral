@@ -31,17 +31,17 @@ private String numPoupanca;
  * O primeiro campo (String) é o número da conta do cliente, e o segundo campo é o cliente ao qual esta conta está associada
  */
  
-HashMap<String, ClienteBancario> clientes = new HashMap<>();
+protected HashMap<String, ClienteBancario> clientes = new HashMap<>();
 
 /**
  * lista de contas da agência(NO FORMATO HASH MAP). O primeiro campo é uma conta, e o segundo campo é o número de cliente
  */
-HashMap<String, Conta> contas = new HashMap<String, Conta>();
+ protected HashMap<String, Conta> contas = new HashMap<String, Conta>();
 
 /**
  * relação da lista de contas com tal cliente: o primeiro campo é o número de conta, e o segundo é o número de cliente
  */
-HashMap<String, String> cclientes = new HashMap<String, String>();
+protected HashMap<String, String> cclientes = new HashMap<String, String>();
 
 /**
  * Construtor para Agência que inicia com um número de agência definido
@@ -247,17 +247,17 @@ public void pesquisaCliente (String numagencia, String numcliente){
  * @param numcliente número do cliente desejado
  * @return retorna true caso consiga encontrar algo, e false caso contrário
  */
-public boolean pesquisaConta( String numcliente){
-// Se a agência existe
-//	if (this.getAgencia() == numagencia){
-//		System.out.println("contém esta agência!");
+public boolean pesquisaConta(String numagencia, String numcliente){
+ //Se a agência existe
+	if (this.getAgencia() == numagencia){
+		System.out.println("contém esta agência!");
 		// Se esta agência contém este cliente
 		if (this.clientes.containsKey(numcliente)){
 			System.out.println("contem este cliente!");
 			System.out.println("Cliente:" + this.clientes.get(numcliente).getNomeCliente());
 			return true;
 		}
-//	}
+	}
 	return false;
 }
 
@@ -293,19 +293,6 @@ public boolean saqueDaConta(String numDaConta, double valor){
 	return false;
 }
 
-/**
- * Cadastra ou recadastra a senha do cliente OBS: senha default :111
- * @param numConta o numero da conta que a senha ira ser cadastrada ou re cadastrada 
- * @param senha esta é a senha 
- * @return true se tudo correu bem false caso contrario
- */
-public boolean cadastraSenhaCienteConta(String numConta, String senha){
-	
-	contas.get(numConta).setSenha(senha);
-	
-	return false;
-	
-}
 
 /**
  * redotna uma string com o extrato desta conta 
@@ -341,6 +328,22 @@ public String saldoDaconta(String numConta){
 	String conv = Double.toString(convert);
 	return conv;
 	
+	
+}
+/**
+ * Altera a senha de uma conta
+ * @param numConta numero da conta que vai ter senha alterada
+ * @param senha senha atual 
+ * @param novaSenha nova senha
+ * @return retorna true se tudo bem e faulse caso contrario
+ */
+public boolean alteraSenhaConta(String numConta, String senha, String novaSenha){
+	
+	if (contas.containsKey(numConta)){
+		contas.get(numConta).setSenha(senha,novaSenha);
+	}
+	
+	return false;
 	
 }
 
