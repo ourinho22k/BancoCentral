@@ -11,14 +11,10 @@ import java.util.Scanner;
  */
 public class Menu {
 
-	private Banco banco;
+	 Banco banco = new Banco();
 	
-	public Banco getBanco() {
-		return banco;
-	}
-	public void setBanco(Banco banco) {
-		this.banco = banco;
-	}
+	
+	
 	
 	
 	/**
@@ -63,15 +59,15 @@ public class Menu {
 				
 				  if (nome.equals("s")||nome.equals("S")){
 				
-//					System.out.println("se atribuido um valor automaticamente:");
-//						System.out.println("Digite o numero da agencia:");
-//				
-//							Scanner entrada = new Scanner(System.in);
-//								int entrou = entrada.nextInt();
+					
+						System.out.println("Digite o numero da agencia:");
 				
-//								String  numAgencia = Integer.toString(entrou);
-//								System.out.println (numAgencia);
-					System.out.println (banco.cadastraAgencia());
+							Scanner entrada = new Scanner(System.in);
+								int entrou = entrada.nextInt();
+	
+								String  numAgencia = Integer.toString(entrou);
+								System.out.println (numAgencia);
+					System.out.println (banco.cadastraAgencia(numAgencia));
 					
 				}
 				else {
@@ -131,7 +127,7 @@ public class Menu {
 					numCliente =  Integer.toString(entrou);
 					 				
 					
-					System.out.println (banco.pesquisaClienteEmagencia(numAgencia, numCliente));
+					banco.pesquisaClienteEmagencia(numAgencia, numCliente);
 					
 					
 				break;
@@ -391,9 +387,9 @@ public class Menu {
 	/**
 	 * 
 	 */
-	public Menu(Banco banc) {
+	public Menu() {
 		
-		this.setBanco(banc);
+		
 		// TODO Auto-generated constructor stub
 	}
 

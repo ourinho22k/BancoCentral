@@ -18,47 +18,47 @@ import com.sun.org.apache.bcel.internal.generic.RETURN;
  */
 public class Banco {
 	
-	/**
-	 * Numero que fornesse os numeros das agencias 
-	 */
-	private int numDASagencias;
-	
-	/**
-	 * Get do numro das agencias
-	 * @return retorna um inteiro com numero as agencias
-	 */
-	public int getNumDASagencias() {
-		
-		return numDASagencias;
-	}
-	/**
-	 * seta o numero da agencia + 5;
-	 */
-	public void setNumDASagencias() {
-		
-	
-		if (getNumDASagencias() < 5){ 
-						
-			this.numDASagencias = getNumDASagencias()+10;
-		}
-		else{
-			
-			this.numDASagencias = getNumDASagencias()+5;
-		}
-	}
-	
-	/**
-	 * transforma o numrdo atual para as  agencias em uma strig para serem suportadas pelo programa
-	 * @return
-	 */
-	public String getNumeroAtualParaAgencias(){
-		
-		String numAgencia =  Integer.toString(getNumDASagencias());
-		
-		return numAgencia;
-		
-		
-	}
+//	/**
+//	 * Numero que fornesse os numeros das agencias 
+//	 */
+//	private int numDASagencias;
+//	
+//	/**
+//	 * Get do numro das agencias
+//	 * @return retorna um inteiro com numero as agencias
+//	 */
+//	public int getNumDASagencias() {
+//		
+//		return numDASagencias;
+//	}
+//	/**
+//	 * seta o numero da agencia + 5;
+//	 */
+//	public void setNumDASagencias() {
+//		
+//	
+//		if (getNumDASagencias() < 5){ 
+//						
+//			this.numDASagencias = getNumDASagencias()+10;
+//		}
+//		else{
+//			
+//			this.numDASagencias = getNumDASagencias()+5;
+//		}
+//	}
+//	
+//	/**
+//	 * transforma o numrdo atual para as  agencias em uma strig para serem suportadas pelo programa
+//	 * @return
+//	 */
+//	public String getNumeroAtualParaAgencias(){
+//		
+//		String numAgencia =  Integer.toString(getNumDASagencias());
+//		
+//		return numAgencia;
+//		
+//		
+//	}
 
 	/**
 	  * Lista de agências do Banco
@@ -86,14 +86,14 @@ public class Banco {
 	 * cadastrar agência, recebendo um valo, se na receber fara automaticamente
 	 * retorna trrue se duto bem e false se deu errado 
 	 */
-	public boolean cadastraAgencia(){
+	public boolean cadastraAgencia(String numagencia){
 		
 		
 //		if(numagencia.equals(null)||numagencia.equals("")||numagencia.equals(" ")){
 			
-		setNumDASagencias();	
-		String numagencia = getNumeroAtualParaAgencias();
-			
+//		setNumDASagencias();	
+//		String numagencia = getNumeroAtualParaAgencias();
+//			
 			System.out.println(numagencia);
 //		}
 //		else {
@@ -102,10 +102,10 @@ public class Banco {
 			agencias.put(numagencia, a);
 			
 			return true;
-//		}
-//		else return false;
 		}
-		return false;
+		else return false;
+//		}
+//		return false;
 	}
 	
 	/**
@@ -281,15 +281,15 @@ public class Banco {
 	/**
 	 * pesquisa cliente em uma agencia
 	 */
-	public boolean pesquisaClienteEmagencia(String numAgencia, String numCliente){
+	public void pesquisaClienteEmagencia(String numAgencia, String numCliente){
 		
-		if(existAgencia(numAgencia)){
+//		if(existAgencia(numAgencia)){
 			
-			 agencias.get(numAgencia).pesquisaCliente(numAgencia, numCliente);
+			agencias.get(numAgencia).pesquisaCliente(numAgencia, numCliente);
 			
-		}
-		
-		return false;
+//		}
+//		
+//		return false;
 		
 	}
 	
