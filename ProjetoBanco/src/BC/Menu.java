@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class Menu {
 
-	 Banco banco = new Banco();
+	 
 	
 	
 	
@@ -23,7 +23,8 @@ public class Menu {
 	
 	
 
-	public void mostraMenu(){
+	public void mostraMenu(Banco banco){
+//		Banco banco = new Banco();
 		int opcao=0 ;
 		while(opcao != 14){
 			
@@ -50,60 +51,66 @@ public class Menu {
 			Scanner entra = new Scanner(System.in);
 			opcao = entra.nextInt();
 			
+			/**
+			 * switch que chama as varias opcoes do Menu 
+			 */
 			switch (opcao) {
+						 
 			case 1:
-				System.out.println("Deseja cadastrar uma conta? S/N\n");
 				
-				Scanner entrad = new Scanner(System.in);
-				  String nome = entrad.next();
+//				System.out.println("Deseja cadastrar uma agencia? S/N\n");
+//				
+//				Scanner entrad = new Scanner(System.in);
+//				  String nome = entrad.next();
+//				  System.out.println(nome);
 				
-				  if (nome.equals("s")||nome.equals("S")){
+//				  if (nome.equals("s")||nome.equals("S")){
 				
 					
 						System.out.println("Digite o numero da agencia:");
 				
-							Scanner entrada = new Scanner(System.in);
-								int entrou = entrada.nextInt();
-	
-								String  numAgencia = Integer.toString(entrou);
-								System.out.println (numAgencia);
-					System.out.println (banco.cadastraAgencia(numAgencia));
+						Scanner entrad = new Scanner(System.in);
+						String numAgencia = entrad.next();
+						System.out.println(numAgencia);
+//								String  numAgencia = Integer.toString(entrou);
+//								System.out.println (numAgencia);
+					banco.cadastraAgencia(numAgencia);
 					
-				}
-				else {
-					System.out.println("Desistencia de cadastra agencia");
-				}
+				
+//				else {
+//					System.out.println("Desistencia do cadastro da agencia");
+				
 				break;
+				
 //				String string = new Integer(number).toString();
 
 				
 			case 2:
 				
-				System.out.println("Deseja cadastrar um clirnte em uma agencia ?\n");
+				System.out.println("Deseja cadastrar um cliente em uma agencia ?\n");
 				
 				System.out.println("Digite o nome do cliente:");
 				
 				 entrad = new Scanner(System.in);
-				   nome = entrad.next();
+				 String nome = entrad.next();
 				 
 				
 				System.out.println("Digite o numero da agencia:");
 				
-				Scanner entrada11 = new Scanner(System.in);
-				 int entrou = entrada11.nextInt();
+				 entrad = new Scanner(System.in);
+				  numAgencia = entrad.nextLine();
 				
-				String numAgencia =  Integer.toString(entrou);
+//				String numAgencia =  Integer.toString(entrou);
 				
 				System.out.println("Digite o numero do cliente:");
 				
 				 entrad = new Scanner(System.in);
-				 entrou = entrad.nextInt();
-				 String  numCliente = Integer.toString(entrou);
+				 String numCliente= entrad.nextLine();
+//				 String  numCliente = Integer.toString(entrou);
 					
-				 
-				 System.out.println (banco.cadastraClienteEmAgencia(numAgencia, numCliente, nome));
+				 banco.cadastraClienteEmAgencia(numAgencia, numCliente, nome);
+				 System.out.println("agencia " + banco.agencias.get(numAgencia).getAgencia() + " agora tem " + banco.agencias.get(numAgencia).clientes.size() + " clientes.");
 				
-	
 	
 				break;
 	
@@ -113,43 +120,36 @@ public class Menu {
 					System.out.println("Digite o numero da agencia: \n");
 				
 					
-					  entrada11 = new Scanner(System.in);
-					  entrou = entrada11.nextInt();
-					
-					numAgencia =  new Integer(entrou).toString();
+					entrad = new Scanner(System.in);
+					String peganumAgencia = entrad.next();
+					System.out.println(peganumAgencia);
 					
 					System.out.println("Digite o numero do cliente \n");
 					
 					
-					  entrada11 = new Scanner(System.in);
-					  entrou = entrada11.nextInt();
-					
-					numCliente =  Integer.toString(entrou);
+					entrad = new Scanner(System.in);
+					String peganumCliente= entrad.next();
 					 				
 					
-					banco.pesquisaClienteEmagencia(numAgencia, numCliente);
-					
+					banco.pesquisaClienteEmagencia(peganumAgencia, peganumCliente);
+//					banco.agencias.get(peganumAgencia).pesquisaCliente(peganumAgencia, peganumCliente);
 					
 				break;
 			case 4:
 				System.out.println("Digite o numero da agencia: \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numAgencia =  Integer.toString(entrou);
+				entrad = new Scanner(System.in);
+				  numAgencia = entrad.next();
 				
 				System.out.println("Digite o numero do cliente \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numCliente =  Integer.toString(entrou);
+				entrad = new Scanner(System.in);
+				  numCliente = entrad.next();
 				 				
 				
-				System.out.println (banco.excluirCienteDaAgendia(numAgencia, numCliente));
+				banco.excluirCienteDaAgendia(numAgencia, numCliente);
 	
 				break;
 			case 5:
@@ -157,29 +157,22 @@ public class Menu {
 				System.out.println("Digite o numero da agencia: \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numAgencia =  Integer.toString(entrou);
+				entrad = new Scanner(System.in);
+				  numAgencia = entrad.next();
 				
 				System.out.println("Digite o numero do cliente \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numCliente =  Integer.toString(entrou);
+				entrad = new Scanner(System.in);
+				  numCliente = entrad.next();
 				
 				System.out.println("Digite o numero da conta \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
+				entrad = new Scanner(System.in);
+				String  numConta = entrad.next();
 				
-				String numConta =  Integer.toString(entrou);
-				
-				System.out.println (banco.cadatraContaEmAgencia(numAgencia, numCliente, numConta));
-	
+				banco.cadatraContaEmAgencia(numAgencia, numCliente, numConta);
 				break;
 			case 6:
 	
@@ -187,120 +180,104 @@ public class Menu {
 				System.out.println("Digite o numero da agencia: \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numAgencia =  Integer.toString(entrou);
+				entrad = new Scanner(System.in);
+				  numAgencia = entrad.next();
 				
 				System.out.println("Digite o numero do cliente \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numCliente =  Integer.toString(entrou);
+				entrad = new Scanner(System.in);
+				  numCliente = entrad.next();
 				
 				System.out.println("Digite o numero da conta \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
+				entrad = new Scanner(System.in);
+				  numConta = entrad.next();
 				
-				 numConta =  Integer.toString(entrou);
-				
-				 System.out.println (banco.excluirContaDaAgencia(numAgencia, numCliente, numConta));
+				banco.excluirContaDaAgencia(numAgencia, numCliente, numConta);
 	
 				break;
 			case 7:
 				
 				System.out.println("Digite o numero da agencia: \n");
-				
-				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numAgencia =  Integer.toString(entrou);
-				
+
+
+				entrad = new Scanner(System.in);
+				numAgencia = entrad.next();
+
 				System.out.println("Digite o numero do cliente \n");
-				
-				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numCliente =  Integer.toString(entrou);
-				
-				
-				
-				System.out.println (banco.pesquisaContaNaAgencia(numAgencia, numCliente));
-	
+
+
+				entrad = new Scanner(System.in);
+				numCliente = entrad.next();
+
+				System.out.println("Digite o numero da conta \n");
+
+
+				entrad = new Scanner(System.in);
+				numConta = entrad.next();
+
+
+
+				banco.pesquisaContaNaAgencia(numAgencia, numCliente, numConta);
+
 				break;
 			case 8:
 				System.out.println("Digite o numero da agencia: \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numAgencia =  Integer.toString(entrou);
+				entrad = new Scanner(System.in);
+				  numAgencia = entrad.next();
 				
 				System.out.println("Digite o numero da conta \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numConta =  Integer.toString(entrou);
+				entrad = new Scanner(System.in);
+				  numConta = entrad.next();
 				
 				
 				
-				System.out.println (banco.saldoConta(numAgencia, numConta));
+				banco.saldoConta(numAgencia, numConta);
 	
 				break;
 			case 9:
 				System.out.println("Digite o numero da agencia: \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numAgencia =  Integer.toString(entrou);
+				entrad = new Scanner(System.in);
+				  numAgencia = entrad.next();
 				
 				System.out.println("Digite o numero da conta \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numConta =  Integer.toString(entrou);
+				entrad = new Scanner(System.in);
+				  numConta = entrad.next();
 				
 				
 				
-				System.out.println (banco.extratoConta(numAgencia, numConta));
+				banco.extratoConta(numAgencia, numConta);
 	
 				break;
 			case 10:
 				System.out.println("Digite o numero da agencia: \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numAgencia =  Integer.toString(entrou);
+				entrad = new Scanner(System.in);
+				  numAgencia = entrad.next();
 				
 				System.out.println("Digite o numero da conta \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numConta =  Integer.toString(entrou);
+				entrad = new Scanner(System.in);
+				  numConta= entrad.next();
 				
 				System.out.println("Digite o valor do deposito: \n");
 				
 				 entra = new Scanner(System.in);
 				int valor = entra.nextInt();
 				
-				System.out.println (banco.depositoConta(numAgencia, numConta, valor));
+				banco.depositoConta(numAgencia, numConta, valor);
 	
 				break;
 			case 11:
@@ -308,25 +285,21 @@ public class Menu {
 				System.out.println("Digite o numero da agencia: \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numAgencia =  Integer.toString(entrou);
+				entrad = new Scanner(System.in);
+				  numAgencia = entrad.next();
 				
 				System.out.println("Digite o numero da conta: \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
+				entrad = new Scanner(System.in);
+				  numConta = entrad.next();
 				
-				numConta =  Integer.toString(entrou);
-				
-				System.out.println("Digite o valor do deposido: \n");
+				System.out.println("Digite o valor do saque: \n");
 				
 				 entra = new Scanner(System.in);
 				 valor = entra.nextInt();
 				
-				 System.out.println (banco.saqueConta(numAgencia, numConta, valor));
+				banco.saqueConta(numAgencia, numConta, valor);
 	
 	
 				break;
@@ -334,18 +307,14 @@ public class Menu {
 				System.out.println("Digite o numero da agencia: \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numAgencia =  Integer.toString(entrou);
-				
+				entrad = new Scanner(System.in);
+				  numAgencia = entrad.next();
+				  
 				System.out.println("Digite o numero da conta \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
-				
-				numConta =  Integer.toString(entrou);
+				entrad = new Scanner(System.in);
+				  numConta = entrad.next();
 				
 				
 				
@@ -353,21 +322,18 @@ public class Menu {
 				System.out.println("Digite a senha atual: \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
+				entrad = new Scanner(System.in);
+				String senha  = entrad.next();
 				
-				String senha =  Integer.toString(entrou);
+				 
 				
 				System.out.println("Digite nova senha: \n");
 				
 				
-				  entrada11 = new Scanner(System.in);
-				  entrou = entrada11.nextInt();
+				entrad = new Scanner(System.in);
+				String novaSenha  = entrad.next();
 				
-				String novaSenha =  Integer.toString(entrou);
-				
-				
-				System.out.println (banco.alterarSenhaConta(numAgencia, numConta, senha, novaSenha));
+				banco.alterarSenhaConta(numAgencia, numConta, senha, novaSenha);
 	
 	
 				break;
@@ -377,7 +343,6 @@ public class Menu {
 				break;
 			case 14:
 						opcao = 14;
-	
 				break;
 				
 				

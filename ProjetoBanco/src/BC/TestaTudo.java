@@ -11,6 +11,8 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.eclipse.jdt.internal.compiler.parser.Scanner;
+
 /**
  * @author fil
  *
@@ -18,79 +20,84 @@ import java.util.TreeSet;
 public class TestaTudo {
 
 	/**
-	 * 
+	 *  
 	 */
 	public TestaTudo() {
 		// TODO Auto-generated constructor stub
 	}
 
 	/**
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		
-		
-//		Menu menu = new Menu();
-//		
-//		menu.mostraMenu();
-//		
-		
+		Banco banco = new Banco();
+		Menu menu = new Menu();
+			//		Scanner entra = new Scanner(System.in);
+//			int opcao = 0;
+		menu.mostraMenu(banco);
+
 		
 
-		Banco b = new Banco();
-		System.out.println(b.cadastraAgencia("10"));
-		System.out.println( b.existAgencia("10"));
-		System.out.println( b.existAgencia("11"));
-		System.out.println("rep se agencia existe");
-		System.out.println(b.existAgencia("10"));
-		System.out.println(b.cadastraClienteEmAgencia("10", "200", "vai filhada mae"));
-		b.pesquisaClienteEmagencia("10", "200");
-		System.out.println(b.cadatraContaEmAgencia("10", "200", "0103"));
-		System.out.println(b.existeConta("10", "0103"));
-		System.out.println(b.depositoConta("10", "0103",1000));
-		System.out.println("\n");
-		System.out.println(b.saldoConta("10", "0103"));
-		System.out.println(b.saqueConta("10", "0103", 200));
-		System.out.println(b.saldoConta("10", "0103"));
-		System.out.println("fim do teste");
-		System.out.println("---------- Extrato de Conta --------------");
-		System.out.println(b.extratoConta("10", "0103"));
-		System.out.println("------------------------------------------");
-		
+//		Banco b = new Banco();
+//		System.out.println(b.cadastraAgencia("10"));
+//		System.out.println("rep se agencia existe");
+//		System.out.println(b.existAgencia("10"));
+//		System.out.println(b.cadastraClienteEmAgencia("10", "200", "vai filhada mae"));
+//		b.pesquisaClienteEmagencia("10", "200");
+//		System.out.println(b.cadatraContaEmAgencia("10", "200", "0103"));
+//		System.out.println(b.existeConta("10", "0103"));
+//		System.out.println(b.depositoConta("10", "0103",1000));
+//		System.out.println("\n");
+//		System.out.println(b.saldoConta("10", "0103"));
+//		System.out.println(b.saqueConta("10", "0103", 200));
+//		System.out.println(b.saldoConta("10", "0103"));
+//		System.out.println("fim do teste");
+//		System.out.println("---------- Extrato de Conta --------------");
+//		System.out.println(b.extratoConta("10", "0103"));
+//		System.out.println("------------------------------------------");
+//		System.out.println("pesquisa ciente");
+//		b.pesquisaClienteEmagencia("10", "200");
+//		System.out.println("pesquisa aqui");
+//		System.out.println(b.pesquisaContaNaAgencia("10", "200"));
+//		System.out.println("exclui conta aqui");
+//		System.out.println(b.excluirContaDaAgencia("10", "200", "0103"));
+//		System.out.println("exclui cliente");
+//		System.out.println(b.excluirCienteDaAgendia("10", "200"));
+//		System.out.println("pesquisa cliente aqui");
+//		b.pesquisaClienteEmagencia("10", "200");
+//		System.out.println("pesquisa cagencia conta");
+//		System.out.println(b.pesquisaContaNaAgencia("20", "200"));
+//		System.out.println("exclui conta aqui");
+//		System.out.println(b.excluirContaDaAgencia("10", "200", "1200"));
+//		System.out.println(b.excluirCienteDaAgendia("10", "200"));
 		
 
 
-		System.out.println( b.existAgencia("10"));
-		System.out.println( b.existAgencia("11"));
-		System.out.println("rep se agencia existe");
-		System.out.println(b.existAgencia("10"));
-		System.out.println(b.cadastraClienteEmAgencia("10", "300", "Ze do Coquin"));
-		System.out.println(b.cadatraContaEmAgencia("10", "300", "1403"));
-		System.out.println(b.existeConta("10", "1403"));
-		System.out.println(b.depositoConta("10", "1403",1000));
-		System.out.println("\n");
-		System.out.println(b.saldoConta("10", "1403"));
-		System.out.println(b.saqueConta("10", "1403", 300));
-		System.out.println(b.saldoConta("10", "1403"));
-		System.out.println("fim do teste");
-		System.out.println("---------- Extrato de Conta --------------");
-		System.out.println(b.extratoConta("10", "1403"));
-		System.out.println("------------------------------------------");
-
-		b.pesquisaClienteEmagencia("10", "300");
-		System.out.println(b.pesquisaContaNaAgencia("10", "300"));
-		System.out.println(b.excluirContaDaAgencia("10", "300", "1403"));
-		System.out.println(b.excluirCienteDaAgendia("10", "300"));
+//		System.out.println( b.existAgencia("10"));
+//		System.out.println( b.existAgencia("11"));
+//		System.out.println("rep se agencia existe");
+//		System.out.println(b.existAgencia("10"));
+//		System.out.println(b.cadastraClienteEmAgencia("10", "300", "Ze do Coquin"));
+//		System.out.println(b.cadatraContaEmAgencia("10", "300", "1403"));
+//		System.out.println(b.existeConta("10", "1403"));
+//		System.out.println(b.depositoConta("10", "1403",1000));
+//		System.out.println("\n");
+//		System.out.println(b.saldoConta("10", "1403"));
+//		System.out.println(b.saqueConta("10", "1403", 300));
+//		System.out.println(b.saldoConta("10", "1403"));
+//		System.out.println("fim do teste");
+//		System.out.println("---------- Extrato de Conta --------------");
+//		System.out.println(b.extratoConta("10", "1403"));
+//		System.out.println("------------------------------------------");
+//
+//		b.pesquisaClienteEmagencia("10", "300");
+//		System.out.println(b.pesquisaContaNaAgencia("10", "300"));
+//		System.out.println(b.excluirContaDaAgencia("10", "300", "1403"));
+//		System.out.println(b.excluirCienteDaAgendia("10", "300"));
 		
-		b.pesquisaClienteEmagencia("10", "200");
-		System.out.println(b.pesquisaContaNaAgencia("10", "200"));
-		System.out.println(b.excluirContaDaAgencia("10", "200", "0103"));
-		System.out.println(b.excluirCienteDaAgendia("10", "200"));
 		
-		b.pesquisaClienteEmagencia("10", "200");
-		System.out.println(b.pesquisaContaNaAgencia("20", "200"));
-		System.out.println(b.excluirContaDaAgencia("10", "200", "1200"));
-		System.out.println(b.excluirCienteDaAgendia("10", "200"));
 		
 		
 ////		Set set = b.agencias.keySet();

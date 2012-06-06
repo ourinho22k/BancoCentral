@@ -3,7 +3,7 @@
  */
 package BC;
 
-import com.sun.org.apache.bcel.internal.generic.LLOAD;
+
 
 /**
  * @author fil
@@ -11,14 +11,30 @@ import com.sun.org.apache.bcel.internal.generic.LLOAD;
  */
 public class ContaCorrente extends Conta {
 
+	
+	/**
+	 * contrutor publico 
+	 * @param numeroconta
+	 * @param numerocliente
+	 */
+	
 	public ContaCorrente(String numeroconta, String numerocliente) {
 		super(numeroconta, numerocliente);
 		// TODO Auto-generated constructor stub
 	}
 
-
-	
-
+	/**
+	 * sobrescreve a variavel taxa extra recebendo um double
+	 */
+	@Override
+	public void setTaxaExtra(double taxaExtra) {
+		// TODO Auto-generated method stub
+		super.setTaxaExtra(taxaExtra);
+	}
+/**
+ * realiza um saque
+ * @param valorSaque recebe um valor e executa um saque em uma determinada conta corrente
+ */
 	public void saque(double valorSaque){
 		
 		if (!getTipos().equals("extrato")) setTipos("saque");
@@ -44,20 +60,34 @@ public class ContaCorrente extends Conta {
 	}
 	
 
-
+	/**
+	 * retorna uma String com um desconto  coma cobranca de uma taxa
+	 * @return
+	 */
 	public String extratos(){
 		
 		setTipos("extrato");
 		
-			saque(2.00 );
+			saque(getTaxaExtra());
 		
 		return listaOperacoes.toString();
 	}
 	
-	
+	/**
+	 * retorna um double com valor de saldo
+	 * @return
+	 */
 	public double saldo(){
 		return getSaldo();
 	}
+	
+	
+	
+
+
+	/**
+	 * construtor generico
+	 */
 	@Override
 	public void Contas() {
 		// TODO Auto-generated method stub

@@ -29,45 +29,67 @@ public class Operacao {
 	 * data da operacao
 	 */
 	private Date data;
-	
+	/**
+	 * valor do saldo 
+	 */
 	private double saldo;
-
+	/**
+	 * retorna um double de saldo 
+	 * @return
+	 */
 	public double getSaldo() {
 		return saldo;
 	}
-
+	/**
+	 * seta o valor de saldo 
+	 * @param saldo
+	 */
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
 
-	/*
-	 * geters e seters
+	/**
+	 * retorna uma String de tipos
 	 */
 	public String getTipo() {
 		return tipo;
 	}
-
+	/**
+	 * seta o valor de Tipor recebendo uam String
+	 * @param tipo
+	 */
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
+	/**
+	 * retorna um double com o valor de Valor
+	 * @return
+	 */
 	public double getValor() {
 		return valor;
 	}
-
+	/**
+	 * seta o valor de Valor, recebendo um bouble Valor
+	 * @param valor
+	 */
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-
+	/**
+	 * retorna a um tipo data
+	 * @return
+	 */
 	public Date getData() {
 		return data;
 	}
-
+	/** 
+	 * quando esta é chamada seta a variavel data com a hora, dia, mes e ano do sistema na hora que é chama 
+	 */
 	public void setData() {
 		this.data = new java.util.Date();
 	}
-	/*
-	 * imprime tudo
+	/**
+	 * retorna uma String com dados das operaçoes efetuadas em uma conta(extrato)
 	 * (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -79,7 +101,8 @@ public class Operacao {
 	}
 
 
-	/*
+	/**
+	 * 
 	 * este construtor obriga inicialiszar com os valores
 	 */
 	public Operacao(String tipo, double valor, double saldo) {
@@ -90,15 +113,13 @@ public class Operacao {
 	}
 
 	/**
-	 * 
+	 * construtos generico
 	 */
 	public Operacao() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * 
-	 */
+	
 	
 
 }
