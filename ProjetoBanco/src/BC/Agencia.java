@@ -264,8 +264,9 @@ public class Agencia {
 		// se a agência existe...
 		//System.out.println("recebi numagencia " + numagencia + " e recebi numcliente" + numcliente);
 		if (this.getAgencia().equals(numagencia)){
-			System.out.println("achei a agencia, e seu numero eh: " + this.getAgencia());
+			//System.out.println("achei a agencia, e seu numero eh: " + this.getAgencia());
 			// Se o cliente existe na agência E há contas desse cliente 
+			
 			System.out.println("Cliente: " + this.clientes.get(numcliente).getNomeCliente());
 			System.out.println("Contas do cliente:\n");
 			Set<String> numcontas = this.cclientes.keySet();
@@ -281,6 +282,7 @@ public class Agencia {
 				}
 			}
 		}
+		
 		else {
 			System.out.println("Nao exixte este cliente");
 		}

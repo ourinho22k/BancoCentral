@@ -283,14 +283,10 @@ public class Banco {
 	 */
 	public void pesquisaClienteEmagencia(String numAgencia, String numCliente){
 
-		//		if(existAgencia(numAgencia)){
-
+			
 		agencias.get(numAgencia).pesquisaCliente(numAgencia, numCliente);
-
-		//		}
-		//		
-		//		return false;
-
+		
+				
 	}
 
 	/**
