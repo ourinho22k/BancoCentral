@@ -1,8 +1,7 @@
 /**
  * 
  */
-package BC;
-
+package OP;
 import java.util.Date;
 
 /**
@@ -121,5 +120,6 @@ public class Operacao {
 
 	
 	
+
 
 }

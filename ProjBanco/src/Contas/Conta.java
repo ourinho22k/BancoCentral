@@ -1,15 +1,16 @@
 /**
  * 
  */
-package BC;
+package Contas;
 
+import OP.Operacao;
 import java.util.ArrayList;
 
 /**
  * @author fil
  *
  */
-public abstract class Conta implements ContaGenerica {
+public abstract class Conta {
 
 	/**
 	 * lista das operacoes realizadas numa conta
@@ -47,6 +48,9 @@ public abstract class Conta implements ContaGenerica {
 	 * esta eh uma senha para a conta so para a conta "futura implementacao"
 	 */
 	private String senha = "111";
+
+
+	
 		
 //	private double juros;
 //	
@@ -181,52 +185,52 @@ public abstract class Conta implements ContaGenerica {
 	 */
 	public void setSaldo(double saldo) {
 		Saldo = saldo;
-	}
+ 	}
 
 	/**
 	 * realiza um saque nesta conta
 	 * @param valor recebe o valor que sera descontado da conta. O funcionamento exato depende do tipo de conta
 	 */
-	public void saque(double valor){
+	public boolean saque(String senha, double valor){
 		
 		setTipos("saque");
 		
 		double saldoAtual = getSaldo();
 		
-		double descontado;
 		
 		
-		if (saldoAtual >= valor ){
+		
+		if (getSenha().equals(senha) && saldoAtual >= valor ){
 			
-			descontado = saldoAtual - valor;
 			
-			setSaldo(descontado);
+			setSaldo(saldoAtual - valor);
 			
 			Operacao op = new Operacao(tipos, valor, getSaldo());
 			
 			op.setData();
 				listaOperacoes.add(op);
 			
-			
+			return true;
 			
 		}
-		
+	
+		return false;
 	}
 
 	/**
 	 * realiza um deposito na conta
 	 * @param valor recebe um valor que sera depositado na conta. O funcionamento exato depende do tipo de conta
 	 */
-	public void dePosito(double valor){
+	public boolean dePosito(double valor){
 		
 		setTipos("deposito");
 		
 		double saldoatual = getSaldo();
-			setSaldo( saldoatual + valor);
+			 setSaldo( saldoatual + valor);
 			
 			Operacao op = new Operacao(getTipos(), valor, getSaldo());
 		op.setData();
-		listaOperacoes.add(op);
+		return listaOperacoes.add(op);
 	}
 	
 	/**
@@ -264,7 +268,7 @@ public abstract class Conta implements ContaGenerica {
 	 */
 	@Override
 	public String toString() {
-		return "Conta [NumConta=" + getNumConta() + ", NumCliente=" + getNumCliente()
-				+ ", Saldo=" + getSaldo() + "]";
+		return "Conta Numero: " + getNumConta() + "\n Numero do Cliente: " + getNumCliente()
+				+ "\n Saldo: " + getSaldo();
 	}
-	}
+}

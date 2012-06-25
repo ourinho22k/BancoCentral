@@ -1,8 +1,10 @@
 /**
  * 
  */
-package BC;
+package AG;
 
+import CL.ClienteBancario;
+import Contas.*;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -14,7 +16,7 @@ import java.util.Set;
 public class Agencia {
 
 
-	ContaGenerica conta;
+	
 
 	/**
 	 * Esta são as variaveis da agencia!
@@ -134,31 +136,31 @@ public class Agencia {
 				// o tipo de conta depende do numero de conta fornecido: se começar com 0, é conta corrente, se começar com 1, é poupança
 				//System.out.println("Número de conta " + numconta + " começa com " + numconta.charAt(0));
 				if (numconta.startsWith("0")){
-					System.out.println("É uma conta corrente!");
+					//System.out.println("É uma conta corrente!");
 					Conta con = new ContaCorrente(numconta, numcliente);
 					this.contas.put(numconta, con);
 					//System.out.println("conta adicionada ao map de contas!");
 					this.cclientes.put(numconta, numcliente);
-					Set<String> numcontas = this.cclientes.keySet();
-					System.out.println("Contas armazenadas: " + numcontas);
-					System.out.println("parabéns, agora voce cadastrou a conta " + con.getNumConta() + " para o cliente: " + this.clientes.get(numcliente).getNomeCliente());
+					//Set<String> numcontas = this.cclientes.keySet();
+//					System.out.println("Contas armazenadas: " + numcontas);
+//					System.out.println("parabéns, agora voce cadastrou a conta " + con.getNumConta() + " para o cliente: " + this.clientes.get(numcliente).getNomeCliente());
 					alteraTaxaextra(numconta, 2.00);
 					return true;
 
 				}
 				else if (numconta.startsWith("1")){
-					System.out.println("É uma poupanca!");
+//					System.out.println("É uma poupanca!");
 					Conta con = new Poupanca(numconta, numcliente);
 					this.contas.put(numconta, con);
 					this.cclientes.put(numconta, numcliente);
-					System.out.println("parabéns, agora voce cadastrou a conta " + con.getNumConta() + " para o cliente: " + this.clientes.get(numcliente).getNomeCliente());
+//					System.out.println("parabéns, agora voce cadastrou a conta " + con.getNumConta() + " para o cliente: " + this.clientes.get(numcliente).getNomeCliente());
 					return true;
 				}
 			}
 
 		}
 		// Senão, desista
-		System.out.println("Nao encontrei a agência. Desisto.");
+//		System.out.println("Nao encontrei a agência. Desisto.");
 		return false;
 	}
 
@@ -174,9 +176,9 @@ public class Agencia {
 		//int numagencia_convertido = Integer.parseInt(numagencia);
 		if(this.getAgencia().equals(numagencia)){
 			// E se o cliente existir E a conta existir....
-			System.out.println("Encontrei a agência!");
+			//System.out.println("Encontrei a agência!");
 			if (this.clientes.containsKey(numcliente) && this.contas.containsKey(numconta)){
-				System.out.println("Encontrei o cliente e sua conta!");
+			//	System.out.println("Encontrei o cliente e sua conta!");
 				// remova esta conta do cliente
 				this.contas.remove(numconta);
 				this.cclientes.remove(numconta);
@@ -184,7 +186,7 @@ public class Agencia {
 			}
 		}
 		// Senão, desista
-		System.out.println("Nao encontrei a agência. Desisto.");
+		//System.out.println("Nao encontrei a agência. Desisto.");
 		return false;
 	}
 
@@ -200,7 +202,7 @@ public class Agencia {
 		ClienteBancario c = new ClienteBancario(numcliente, nome);
 		//System.out.println("recebi numagencia " + numagencia + " e recebi numcliente " + numcliente + " e o nome " + nome);
 		// Se agência existir...
-		System.out.println("O numero desta agencia: " + this.getAgencia());
+		//System.out.println("O numero desta agencia: " + this.getAgencia());
 		if(this.getAgencia().equals(numagencia)){
 			// E se o cliente não existir....
 			//System.out.println("Eu enxergo a agencia.");
@@ -208,7 +210,7 @@ public class Agencia {
 				// cadastre o cliente
 				//System.out.println("O cliente nao existe.");
 				this.clientes.put(numcliente, c);
-				System.out.println("parabéns, agora voce cadastrou o cliente: " + this.clientes.get(numcliente).getNomeCliente());
+				//System.out.println("parabéns, agora voce cadastrou o cliente: " + this.clientes.get(numcliente).getNomeCliente());
 				return true;
 			}
 			// Senão, desista
@@ -218,7 +220,7 @@ public class Agencia {
 			}
 		}
 		else {
-			System.out.println("Nao encontrei agencia.");
+			//System.out.println("Nao encontrei agencia.");
 			return false;
 		}
 	}
@@ -235,7 +237,8 @@ public class Agencia {
 			// E se o cliente existir....
 			if (this.clientes.containsKey(numcliente)){
 				if (this.cclientes.containsValue(numcliente)) {
-					System.out.println("Este cliente ainda tem contas. Nao se pode remover um cliente com contas.");
+					//System.out.println("Este cliente ainda tem contas. Nao se pode remover um cliente com contas.");
+					//Nao é possivel remover pois o cliente tem conta
 					return false;
 				}
 				else{
@@ -244,11 +247,13 @@ public class Agencia {
 
 					// remova o cliente
 					this.clientes.remove(numcliente);
-					System.out.println("Cliente removido com sucesso. ");
+				//	System.out.println("Cliente removido com sucesso. ");
+					//Cod 111 tudo ok 
 					return true;
 				}
 			}
 			// Senão, desista
+			// codigo 400 erro nao existe ou nao foi possivel 
 			else return false;
 		}
 		else return false;
@@ -260,32 +265,32 @@ public class Agencia {
 	 * @param numcliente número do cliente desejado
 	 * 
 	 */
-	public void pesquisaCliente (String numagencia, String numcliente){
+	public String pesquisaCliente (String numagencia, String numcliente){
 		// se a agência existe...
 		//System.out.println("recebi numagencia " + numagencia + " e recebi numcliente" + numcliente);
 		if (this.getAgencia().equals(numagencia)){
 			//System.out.println("achei a agencia, e seu numero eh: " + this.getAgencia());
 			// Se o cliente existe na agência E há contas desse cliente 
 			
-			System.out.println("Cliente: " + this.clientes.get(numcliente).getNomeCliente());
-			System.out.println("Contas do cliente:\n");
+//			System.out.println("Cliente: " + this.clientes.get(numcliente).getNomeCliente());
+//			System.out.println("Contas do cliente:\n");
 			Set<String> numcontas = this.cclientes.keySet();
-			System.out.println("Contas armazenadas: " + numcontas);
+//			System.out.println("Contas armazenadas: " + numcontas);
 			if (this.clientes.containsKey(numcliente) && this.cclientes.containsValue(numcliente)){
 				for(String vassoura : numcontas){
-					System.out.println("Procurando pela conta:" + vassoura);
+					//System.out.println("Procurando pela conta:" + vassoura);
 					if (this.cclientes.containsKey(vassoura) && this.cclientes.get(vassoura).equalsIgnoreCase(numcliente)){
 
-						System.out.println("conta: " + vassoura);
+						return  vassoura;
+//						System.out.println("conta: " + vassoura);
 					}
 					
 				}
 			}
 		}
 		
-		else {
-			System.out.println("Nao exixte este cliente");
-		}
+		
+		return "erro";
 	}
 
 	/**
@@ -294,20 +299,21 @@ public class Agencia {
 	 * @param numcliente número do cliente desejado
 	 * @return retorna true caso consiga encontrar algo, e false caso contrario
 	 */
-	public boolean pesquisaConta(String numagencia, String numcliente, String numconta){
+	public String pesquisaConta(String numagencia, String numcliente, String numconta){
 		//Se a agência existe
 		if (this.getAgencia().equals(numagencia)){
-			System.out.println("contém esta agência!");
+//			System.out.println("contém esta agência!");
 			// Se esta agência contém este cliente e esta conta
 			if (this.clientes.containsKey(numcliente) && this.contas.containsKey(numconta)){
 				//System.out.println("contem esta conta!");
-				System.out.println("Dados da conta:\n");
-				System.out.println(this.contas.get(numconta).toString());
+//				System.out.println("Dados da conta:\n");
+//				System.out.println(this.contas.get(numconta).toString());
 				//			System.out.println("Cliente:" + this.clientes.get(numcliente).getNomeCliente());
-				return true;
+				
+				return "Cliente:" + this.clientes.get(numcliente).getNomeCliente();
 			}
 		}
-		return false;
+		return "erro";
 	}
 
 	/**
@@ -318,14 +324,12 @@ public class Agencia {
 	 */
 	public boolean depositoEmConta( String numDaConta , double valor){
 
-		//	if (pesquisaConta(numAgencia, numCliente)){
+		
 
-		contas.get(numDaConta).dePosito(valor);
-		//		
-		//	return true;
-		//	}
+		if(contas.get(numDaConta).dePosito(valor))return true;
+		
 
-		return true;
+		return false;
 
 	}
 
@@ -334,11 +338,15 @@ public class Agencia {
 	 * @param numDaConta : este eh o numero da conta que sera faita a operacao 
 	 * @param valor : o valor que sera retirado da conta
 	 */
-	public void saqueDaConta(String numDaConta, double valor){
+	public boolean saqueDaConta(String numDaConta, String senha, double valor){
 
-		contas.get(numDaConta).saque(valor);
+		if (existeConta(numDaConta)){
+			
+			this.contas.get(numDaConta).saque(senha, valor);
+			return true;
+		}
+		return false;
 
-		//	return false;
 	}
 
 
@@ -398,20 +406,39 @@ public class Agencia {
 	/**
 	 * seta a taxa extra nas contas
 	 */
-	public void alteraTaxaextra( String numConta, double taxaExtra ){
+	public boolean alteraTaxaextra( String numConta, double taxaExtra ){
 
-		contas.get(numConta).setTaxaExtra(taxaExtra);
+		if (existeConta(numConta)){
+			contas.get(numConta).setTaxaExtra(taxaExtra);
+		 return true;
+		}
+		
+		return false;
 	}
 
+	/**
+	 * Existe conta verifica se na agencia existe esta determinada conta, retorna true se form encontrada uma conta nesta agencia. 
+	 * @param numConta he o numero da conta que devera ser encontrado
+	 * @return true se achar a conta com este numero ou false caso contrario 
+	 */
+	public boolean existeConta(String numConta){
+		
+		 if(contas.containsKey(numConta))
+			 return true;
+			
+		return false;
+	}
+	
+		
 	/**
 	 * override de toString para imprimir campos de Agencia
 	 */
 	@Override
 	public String toString() {
-		return "Agencia [conta=" + conta.toString() + ", numAgencia=" + numAgencia
-				+ ", numeContas=" + numeContas + ", numPoupanca=" + numPoupanca
-				+ ", clientes=" + clientes.toString() + ", contas=" + contas + ", cclientes="
-				+ cclientes.toString() + "]";
+		return "Agencia  Numero:	" + getAgencia();
+//				+ "\nNumero de contas:	" + numeContas + ", numPoupanca=" + numPoupanca
+//				+ ", clientes=" + clientes.toString() + ", contas=" + contas + ", cclientes="
+//				+ cclientes.toString() + "]";
 	}
 
 }

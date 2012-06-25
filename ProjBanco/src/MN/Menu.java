@@ -1,8 +1,9 @@
 /**
  * 
  */
-package BC;
+package MN;
 
+import BC.Banco;
 import java.util.Scanner;
 
 /**
@@ -67,14 +68,14 @@ public class Menu {
 				//				  if (nome.equals("s")||nome.equals("S")){
 
 
-				System.out.println("Digite o numero da agencia:");
-
-				Scanner entrad = new Scanner(System.in);
-				String numAgencia = entrad.next();
-				System.out.println(numAgencia);
-				//								String  numAgencia = Integer.toString(entrou);
-				//								System.out.println (numAgencia);
-				banco.cadastraAgencia(numAgencia);
+//				System.out.println("Digite o numero da agencia:");
+//
+//				Scanner entrad = new Scanner(System.in);
+//				String numAgencia = entrad.next();
+//				System.out.println(numAgencia);
+//				//								String  numAgencia = Integer.toString(entrou);
+//				//								System.out.println (numAgencia);
+				banco.cadastraAgencia();
 
 
 				//				else {
@@ -91,14 +92,14 @@ public class Menu {
 
 				System.out.println("Digite o nome do cliente:");
 
-				entrad = new Scanner(System.in);
+				Scanner entrad = new Scanner(System.in);
 				String nome = entrad.next();
 
 
 				System.out.println("Digite o numero da agencia:");
 
 				entrad = new Scanner(System.in);
-				numAgencia = entrad.nextLine();
+				String numAgencia = entrad.nextLine();
 
 				//				String numAgencia =  Integer.toString(entrou);
 
@@ -108,8 +109,8 @@ public class Menu {
 				String numCliente= entrad.nextLine();
 				//				 String  numCliente = Integer.toString(entrou);
 
-				banco.cadastraClienteEmAgencia(numAgencia, numCliente, nome);
-				System.out.println("agencia " + banco.agencias.get(numAgencia).getAgencia() + " agora tem " + banco.agencias.get(numAgencia).clientes.size() + " clientes.");
+				System.out.println(banco.cadastraClienteEmAgencia(numAgencia, numCliente, nome));
+				//System.out.println("agencia " + banco.agencias.get(numAgencia).getAgencia() + " agora tem " + banco.agencias.get(numAgencia).clientes.size() + " clientes.");
 
 
 				break;
@@ -131,7 +132,7 @@ public class Menu {
 				String peganumCliente= entrad.next();
 
 
-				banco.pesquisaClienteEmagencia(peganumAgencia, peganumCliente);
+				System.out.print(banco.pesquisaClienteEmagencia(peganumAgencia, peganumCliente));
 				//					banco.agencias.get(peganumAgencia).pesquisaCliente(peganumAgencia, peganumCliente);
 
 				break;
@@ -149,7 +150,7 @@ public class Menu {
 				numCliente = entrad.next();
 
 
-				banco.excluirCienteDaAgendia(numAgencia, numCliente);
+				System.out.println(banco.excluirCienteDaAgendia(numAgencia, numCliente));
 
 				break;
 			case 5:
@@ -172,7 +173,7 @@ public class Menu {
 				entrad = new Scanner(System.in);
 				String  numConta = entrad.next();
 
-				banco.cadatraContaEmAgencia(numAgencia, numCliente, numConta);
+				System.out.println(banco.cadatraContaEmAgencia(numAgencia, numCliente, numConta));
 				break;
 			case 6:
 
@@ -195,7 +196,7 @@ public class Menu {
 				entrad = new Scanner(System.in);
 				numConta = entrad.next();
 
-				banco.excluirContaDaAgencia(numAgencia, numCliente, numConta);
+				System.out.println(banco.excluirContaDaAgencia(numAgencia, numCliente, numConta));
 
 				break;
 			case 7:
@@ -220,7 +221,7 @@ public class Menu {
 
 
 
-				banco.pesquisaContaNaAgencia(numAgencia, numCliente, numConta);
+				System.out.println(banco.pesquisaContaNaAgencia(numAgencia, numCliente, numConta));
 
 				break;
 			case 8:
@@ -277,7 +278,7 @@ case 10:
 	entra = new Scanner(System.in);
 	int valor = entra.nextInt();
 
-	banco.depositoConta(numAgencia, numConta, valor);
+	System.out.println(banco.depositoConta(numAgencia, numConta, valor));
 
 	break;
 case 11:
@@ -288,6 +289,13 @@ case 11:
 	entrad = new Scanner(System.in);
 	numAgencia = entrad.next();
 
+	
+	System.out.println("Digite a senha: \n");
+
+
+	entrad = new Scanner(System.in);
+	String senha = entrad.next();
+	
 	System.out.println("Digite o numero da conta: \n");
 
 
@@ -299,7 +307,7 @@ case 11:
 	entra = new Scanner(System.in);
 	valor = entra.nextInt();
 
-	banco.saqueConta(numAgencia, numConta, valor);
+	System.out.println(banco.saqueConta(numAgencia, numConta, senha, valor));
 
 
 	break;
@@ -323,7 +331,7 @@ case 12:
 
 
 	entrad = new Scanner(System.in);
-	String senha  = entrad.next();
+	 senha  = entrad.next();
 
 
 
@@ -333,7 +341,7 @@ case 12:
 	entrad = new Scanner(System.in);
 	String novaSenha  = entrad.next();
 
-	banco.alterarSenhaConta(numAgencia, numConta, senha, novaSenha);
+	System.out.println(banco.alterarSenhaConta(numAgencia, numConta, senha, novaSenha));
 
 
 	break;
@@ -357,5 +365,6 @@ case 14:
 
 		// TODO Auto-generated constructor stub
 	}
+
 
 }

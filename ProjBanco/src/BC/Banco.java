@@ -3,8 +3,10 @@
  */
 package BC;
 
+import AG.Agencia;
+import CL.ClienteBancario;
 import java.util.HashMap;
-;
+
 
 
 /**
@@ -13,47 +15,47 @@ import java.util.HashMap;
  */
 public class Banco {
 
-	//	/**
-	//	 * Numero que fornesse os numeros das agencias 
-	//	 */
-	//	private int numDASagencias;
-	//	
-	//	/**
-	//	 * Get do numro das agencias
-	//	 * @return retorna um inteiro com numero as agencias
-	//	 */
-	//	public int getNumDASagencias() {
-	//		
-	//		return numDASagencias;
-	//	}
-	//	/**
-	//	 * seta o numero da agencia + 5;
-	//	 */
-	//	public void setNumDASagencias() {
-	//		
-	//	
-	//		if (getNumDASagencias() < 5){ 
-	//						
-	//			this.numDASagencias = getNumDASagencias()+10;
-	//		}
-	//		else{
-	//			
-	//			this.numDASagencias = getNumDASagencias()+5;
-	//		}
-	//	}
-	//	
-	//	/**
-	//	 * transforma o numrdo atual para as  agencias em uma strig para serem suportadas pelo programa
-	//	 * @return
-	//	 */
-	//	public String getNumeroAtualParaAgencias(){
-	//		
-	//		String numAgencia =  Integer.toString(getNumDASagencias());
-	//		
-	//		return numAgencia;
-	//		
-	//		
-	//	}
+		/**
+		 * Numero que fornesse os numeros das agencias 
+		 */
+		private int numDASagencias;
+		
+		/**
+		 * Get do numro das agencias
+		 * @return retorna um inteiro com numero as agencias
+		 */
+		public int getNumDASagencias() {
+			
+			return numDASagencias;
+		}
+		/**
+		 * seta o numero da agencia + 5;
+		 */
+		public void setNumDASagencias() {
+			
+		
+			if (getNumDASagencias() < 5){ 
+							
+				this.numDASagencias = getNumDASagencias()+10;
+			}
+			else{
+				
+				this.numDASagencias = getNumDASagencias()+5;
+			}
+		}
+		
+		/**
+		 * transforma o numrdo atual para as  agencias em uma strig para serem suportadas pelo programa
+		 * @return
+		 */
+		public String getNumeroAtualParaAgencias(){
+			
+			String numAgencia =  Integer.toString(getNumDASagencias());
+			
+			return numAgencia;
+			
+			
+		}
 
 	/**
 	 * Lista de agências do Banco
@@ -79,24 +81,24 @@ public class Banco {
 	 * cadastrar agência, recebendo um valo, se na receber fara automaticamente
 	 * retorna trrue se duto bem e false se deu errado 
 	 */
-	public boolean cadastraAgencia(String numagencia){
+	public boolean cadastraAgencia(){
 
 
-		//		if(numagencia.equals(null)||numagencia.equals("")||numagencia.equals(" ")){
+//				if(numagencia.equals(null)||numagencia.equals("")||numagencia.equals(" ")){
 
-		//		setNumDASagencias();	
-		//		String numagencia = getNumeroAtualParaAgencias();
-		//			
-		System.out.println(numagencia);
-		//		}
-		//		else {
+				setNumDASagencias();	
+				String numagencia = getNumeroAtualParaAgencias();
+					
+			
+//				}
+//				else {
 		if(!agencias.containsKey(numagencia))	{
 			Agencia a = new Agencia(numagencia);
 			agencias.put(numagencia, a);
 			//System.out.println("consegui cadastrar a agencia.");
 			return true;
 		}
-		else return false;
+		 return false;
 		//		}
 		//		return false;
 	}
@@ -195,9 +197,9 @@ public class Banco {
 	 */
 	public boolean depositoConta(String numAgencia, String numConta, double valor){
 
-		if ( agencias.containsKey(numAgencia) && agencias.get(numAgencia).contas.containsKey(numConta))
+		if ( agencias.containsKey(numAgencia) && agencias.get(numAgencia).existeConta(numConta))
 
-			return agencias.get(numAgencia).depositoEmConta(numConta, valor);
+			return this.agencias.get(numAgencia).depositoEmConta(numConta, valor);
 
 		return false;
 
@@ -210,14 +212,12 @@ public class Banco {
 	 * @param valor o valor aser decrecido do saldo 
 	 * @return true se tudo bem false caso contrario
 	 */
-	public boolean saqueConta(String numAgencia, String numConta, double valor){
+	public boolean saqueConta(String numAgencia, String numConta, String senha, double valor){
 
-		if(existAgencia(numAgencia) && existeConta(numAgencia, numConta)) {
-			agencias.get(numAgencia).saqueDaConta(numConta, valor);
-			return true;
-		}
-
-		return false;
+		
+			return agencias.get(numAgencia).saqueDaConta(numConta, senha, valor);
+			
+		
 
 	}
 
@@ -229,11 +229,11 @@ public class Banco {
 	 */
 	public String saldoConta(String numAgencia, String numConta){
 
-		if (agencias.containsKey(numAgencia)&& agencias.get(numAgencia).contas.containsKey(numConta))
+		
 
 			return agencias.get(numAgencia).saldoDaconta(numConta);
 
-		return null;
+		
 
 	}
 
@@ -245,11 +245,9 @@ public class Banco {
 	 */
 	public String extratoConta(String numAgencia, String numConta){
 
-		if (agencias.containsKey(numAgencia) && agencias.get(numAgencia).contas.containsKey(numConta)) 
+		return agencias.get(numAgencia).extratoConta(numConta);
 
-			return agencias.get(numAgencia).extratoConta(numConta);
-
-		return numConta;
+		
 
 	}
 
@@ -273,7 +271,8 @@ public class Banco {
 	 */
 	public boolean existeConta(String numAgencia, String numConta){
 
-		if (agencias.containsKey(numAgencia)&& agencias.get(numAgencia).contas.containsKey(numConta))return true;
+		if (agencias.containsKey(numAgencia)&& agencias.get(numAgencia).existeConta(numConta))
+			return true;
 
 		return false;
 	}
@@ -281,10 +280,10 @@ public class Banco {
 	/**
 	 * pesquisa cliente em uma agencia
 	 */
-	public void pesquisaClienteEmagencia(String numAgencia, String numCliente){
+	public String pesquisaClienteEmagencia(String numAgencia, String numCliente){
 
 			
-		agencias.get(numAgencia).pesquisaCliente(numAgencia, numCliente);
+		return agencias.get(numAgencia).pesquisaCliente(numAgencia, numCliente);
 		
 				
 	}

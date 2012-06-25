@@ -1,13 +1,17 @@
 /**
  * 
  */
-package BC;
+package Contas;
+
+import OP.Operacao;
 
 /**
  * @author fil
  *
  */
 public class Poupanca extends Conta {
+	
+	
 	
 	/**
 	 * Construtor especifico da casse poupanca
@@ -25,26 +29,24 @@ public class Poupanca extends Conta {
 	 * variavel juros usado para acrecer no valor do deposito de uma poupaça
 	 */
 	private double juros = 0.10;
-
 	
-	/**
-	 * construtor generico
-	 */
-	@Override
-	public void Contas() {
-		// TODO Auto-generated method stub
 		
-	}
 	/**
 	 * deposito acrecenta o valor que sera depositado nesta conta mais os valro do juros
 	 * @param valor valor que sera acercentado no saldo da conta
 	 */
-	public void deposito(double valor){
+	public boolean dePosito(double valor){
 		
-		double maisJuros = getSaldo() + addJuros(valor);
-
-		super.setSaldo(maisJuros);
+		setTipos("deposito");
+						
+		setSaldo( getSaldo()+addJuros(valor));
 		
+		Operacao op = new Operacao(tipos, valor, getSaldo());
+		
+		op.setData();
+		return	listaOperacoes.add(op);
+		
+		 
 		
 	}
 	/**
@@ -76,23 +78,29 @@ public class Poupanca extends Conta {
 	 * seta a variavel saldo e echama o metodo addJuros, somando o valor mais os juros
 	 */
 	public void setSaldo(double valor){
-		double qqcoisa = addJuros(valor);
-		super.setSaldo(qqcoisa);
+		
+		super.setSaldo(valor);
 		
 	}
-	/**
-	 * saque decrecenta o valor em saldo , checando se o valor é maior que saldo 
-	 * se aque for maior que saldo imprime "Saldo insuficiente"
-	 */
-	public void saque(double valor){
-		if (getSaldo() >= valor){
-					
-				super.saque(valor);
-	}
-		else {
-			System.out.println("saldo insuficiente");
-		}
-		}
 	
 	
+	
+//	/**
+//	 * saque decrecenta o valor em saldo , checando se o valor é maior que saldo 
+//	 * se aque for maior que saldo imprime "Saldo insuficiente"
+//	 */
+//	public boolean saque(String senha,	double valor){
+//		
+//		if(getSenha().equals(senha)){
+//			System.out.println("entrou");
+//		if (getSaldo() >= valor){
+//			System.out.println("entrou aqui");
+//				super.saque(getSenha(), valor);
+//				return true;
+//	}
+//		}
+//		
+//		return false;
+//		}
+
 }
