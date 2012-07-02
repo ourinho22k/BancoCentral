@@ -90,7 +90,7 @@ public class ContaCorrente extends Conta {
 	 * retorna uma String com um desconto  coma cobranca de uma taxa
 	 * @return
 	 */
-	public String extratosCor(){
+	public String extrato(){
 						
 		setTipos("extrato");
 		

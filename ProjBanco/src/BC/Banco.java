@@ -329,14 +329,14 @@ public class Banco {
 	 * @param numCliente numero da conta 
 	 * @return retorna true se tudo ocorreu bem e Faulse caso contrario
 	 */
-	public boolean pesquisaContaNaAgencia(String numAgencia, String numCliente, String numConta){
+	public String pesquisaContaNaAgencia(String numAgencia, String numCliente, String numConta){
 
 
 		//if (existeConta(numAgencia, numConta)){
 
-			agencias.get(numAgencia).pesquisaConta(numAgencia,numCliente, numConta);
+			return agencias.get(numAgencia).pesquisaConta(numAgencia,numCliente, numConta);
 
-			return true;
+			
 //		}
 //		return false;
 
