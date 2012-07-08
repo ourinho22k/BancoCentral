@@ -361,6 +361,10 @@ public class Banco {
 		return false;
 	}
 
+	/**
+	 * Lista as agencias exiastentes neste Banco
+	 * @return retorna uma Strign com as Agencias exixtentes
+	 */
 	public String listaAgenciasNesteBanco(){
 		
 		return this.agencias.toString();
@@ -368,6 +372,11 @@ public class Banco {
 		
 	}
 
+	/**
+	 * Lista as contas existentes nesta agensia, neste Banco
+	 * @param numAgencia numero da agencia a listar os numeros de contas
+	 * @return retorna uma String com os numeros de contas
+	 */
 public String listacontasAgencia(String numAgencia){
 		
 		return agencias.get(numAgencia).listaContasNestaAgencia();
@@ -376,6 +385,11 @@ public String listacontasAgencia(String numAgencia){
 		
 	}
 
+/**
+ * Salva o estado da class Banco, recebendo o banco que sera salvo
+ * @param bc é o banco que sera salvo no hdd
+ * @return 
+ */
 public boolean salvarEstadoBC(Banco bc){
 	
 	Estado estado = new Estado();
@@ -387,6 +401,11 @@ public boolean salvarEstadoBC(Banco bc){
 		
 }
 
+/**
+ * Recupera o estado da classe Banco salvo enteriormente
+ * @return retorna um Banco
+ */
+
 public Banco recupEstadoBC(){
 	
 	Estado estado = new Estado();
@@ -397,6 +416,10 @@ public Banco recupEstadoBC(){
 	
 }
 
+/**
+ * Salva o estado atual das agencias no HDD
+ * @return 
+ */
 public boolean salvarEstadoAG(){
 	
 	Estado estado = new Estado();
@@ -409,6 +432,10 @@ public boolean salvarEstadoAG(){
 		
 }
 
+/**
+ * Recupera o estado da Agencia e a Lista de cliente do banco ja salvos (streaming) no HDD
+ * @return
+ */
 public boolean recupEstadoAG(){
 	
 	Estado estado = new Estado();

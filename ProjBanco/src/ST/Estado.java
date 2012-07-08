@@ -22,9 +22,16 @@ import CL.ClienteBancario;
  *
  */
 public class Estado {
-
+	
+	/**
+	 * declaracao da XStream transformacao das classes em  XML
+	 */
 	XStream xstream = new XStream(new StaxDriver());
 
+	/**
+	 * Este metodo he responcavel pela percistencia do banco em hd 
+	 * esta recebe uma string XStream em formato XML, salvando este arquivo em hd
+	 */
 	public boolean salvaEstadoBC(String  Bcxml){
 
 
@@ -48,6 +55,10 @@ public class Estado {
 		return false;
 	}
 
+	/**
+	 * Este metodo quando é envocado retorna String XML do banco, que sera tranformado em uma classe Banco,
+	 * apos ser enviado ha o metodo XMLtoBC(despersistido).
+	 */
 	public String recuperaEstadoBC(){
 
 		try{
@@ -69,6 +80,10 @@ public class Estado {
 		return null;
 	}
 
+	/**
+	 * metodo que recebe um objeto Banco faz a persistencia para uma String XStream, e retorna uma String XML,
+	 *  que representa um objeto Banco. 
+	 */
 	public String BCtoXML(Banco bbanco){
 
 		String Bcxml = xstream.toXML(bbanco);
@@ -78,6 +93,9 @@ public class Estado {
 
 	}
 
+	/**
+	 * metodo tranforma uma XMLBC em uma calsse Banco e retorna esta calsse transformada
+	 */
 	public Banco XMLtoBC(String xml){
 
 		Banco newbc = (Banco)xstream.fromXML(xml);
@@ -86,6 +104,9 @@ public class Estado {
 
 	}
 	
+	/**
+	 *este metodo tranforma um arquivo salvo XML em um Hashmap<String, ClienteBancario > retornando o mesmo
+	 */
 	@SuppressWarnings("unchecked")
 	public HashMap<String, ClienteBancario> XMLtoCL(String xml){
 
@@ -96,6 +117,10 @@ public class Estado {
 
 	}
 	
+	/**
+	 * Este metodo faz o Streaming em hd de dos arquivos XML da classe Agencia e classe Cliente bancario ,transformados 
+	 * nos metodos AGtoXML e CLtoXML.
+	 */
 	public boolean salvaEstadoAG(String  AGxml, String CLxml){
 
 
@@ -129,6 +154,10 @@ public class Estado {
 		return false;
 	}
 
+	/**
+	 * Este metodo quando é envocado retorna String XML do Agencias, que sera tranformado de Agencias da classe Banco, apos ser enviado 
+	 * ha o metodo XMLtoAg(despersistido).
+	 */
 	public String recuperaEstadoAG(){
 
 		try{
@@ -150,6 +179,9 @@ public class Estado {
 		return null;
 	}
 	
+	/**
+	 *este metodo tranforma um arquivo salvo XML em um Hashmap<String, ClienteBancario > retornandop o mesmo
+	 */
 	@SuppressWarnings("unchecked")
 	public HashMap<String, Agencia> XMLtoAG(String xml){
 
@@ -159,6 +191,9 @@ public class Estado {
 
 	}
 
+	/**
+	 *este metodo tranforma uma classe agencia em uma arquivo XML por intermedio do XStream e retornando este arquivo XML
+	 */
 	public String AGtoXML(HashMap<String, Agencia> agencia){
 
 		String agxml = xstream.toXML(agencia);
@@ -168,6 +203,10 @@ public class Estado {
 
 	}
 	
+	/**
+	 * Este metodo quando é envocado retorna String XML do Hahsmap LiataClientebancario, que sera tranformado 
+	 * em uma hashmap da classe Banco, apos ser enviado ha o metodo XMLtoBC(despersistido).
+	 */
 	public String recuperaEstadoCLI(){
 
 		try{
@@ -189,7 +228,11 @@ public class Estado {
 		return null;
 	}
 
-	
+	/**
+	 * Este metodo transforma um hashMap da classe Banco em um arquivo XML
+	 * @param listaClienteDoBanco
+	 * @return
+	 */
 	
 	public String CLtoXML(HashMap<String, ClienteBancario> listaClienteDoBanco){
 		
@@ -205,7 +248,7 @@ public class Estado {
 
 	
 	/**
-	 * 
+	 * Construtor generico
 	 */
 	public Estado() {
 		// TODO Auto-generated constructor stub
