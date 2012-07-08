@@ -268,7 +268,6 @@ public abstract class Conta {
 	 */
 	@Override
 	public String toString() {
-		return "Conta Numero: " + getNumConta() + "\n Numero do Cliente: " + getNumCliente()
-				+ "\n Saldo: " + getSaldo();
+		return "Conta Numero: " + getNumConta() + "\n Numero do Cliente: " + getNumCliente();
 	}
 }

@@ -6,7 +6,7 @@ package BC;
 import AG.Agencia;
 import CL.ClienteBancario;
 import java.util.HashMap;
-
+import ST.Estado;
 
 
 /**
@@ -19,6 +19,7 @@ public class Banco {
 		 * Numero que fornesse os numeros das agencias 
 		 */
 		private int numDASagencias;
+		
 		
 		/**
 		 * Get do numro das agencias
@@ -360,6 +361,64 @@ public class Banco {
 		return false;
 	}
 
+	public String listaAgenciasNesteBanco(){
+		
+		return this.agencias.toString();
+		 
+		
+	}
+
+public String listacontasAgencia(String numAgencia){
+		
+		return agencias.get(numAgencia).listaContasNestaAgencia();
+		
+		 
+		
+	}
+
+public boolean salvarEstadoBC(Banco bc){
+	
+	Estado estado = new Estado();
+	
+	
+	estado.salvaEstadoBC(estado.BCtoXML(bc));
+	
+	return false;
+		
+}
+
+public Banco recupEstadoBC(){
+	
+	Estado estado = new Estado();
+	 
+	Banco bc = estado.XMLtoBC(estado.recuperaEstadoBC());
+	
+	return bc;
+	
+}
+
+public boolean salvarEstadoAG(){
+	
+	Estado estado = new Estado();
+	
+	
+	estado.salvaEstadoAG(estado.AGtoXML(agencias), estado.CLtoXML(listaClienteDoBanco));
+	
+	
+	return false;
+		
+}
+
+public boolean recupEstadoAG(){
+	
+	Estado estado = new Estado();
+	 
+	this.agencias = estado.XMLtoAG(estado.recuperaEstadoAG());
+	this.listaClienteDoBanco = estado.XMLtoCL(estado.recuperaEstadoCLI());
+	
+	return true;
+	
+}
 
 	//	/**
 	//	 * implementa depois

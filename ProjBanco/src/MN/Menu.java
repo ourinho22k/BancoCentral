@@ -6,6 +6,8 @@ package MN;
 import BC.Banco;
 import java.util.Scanner;
 
+import ST.Estado;
+
 /**
  * @author fil
  *
@@ -44,6 +46,13 @@ public class Menu {
 			System.out.println("	12.	Alterar senha do cliente");
 			System.out.println("	13.	Salvar estado do sistema");
 			System.out.println("	14.	SAIR");
+			System.out.println("	15.	existe agencia?");
+			System.out.println("	16.	existe conta?");
+			System.out.println("	17.	listar agencias");
+			System.out.println("	18.	listar contas de X agencia");
+			System.out.println("	19.	recup banco");
+			System.out.println("	20.	recup agencia");
+			System.out.println("	21.	salvar agencia");
 			System.out.println("--------------------------");
 			System.out.println("	Digite uma opcao:____");
 
@@ -346,6 +355,9 @@ case 12:
 
 	break;
 case 13:
+	//salvar sistema
+	
+	System.out.println(banco.salvarEstadoBC(banco));
 
 
 	break;
@@ -353,7 +365,66 @@ case 14:
 	opcao = 14;
 	break;
 
+case 15:
+	System.out.println("Digite o numero da agencia: \n");
 
+
+	entrad = new Scanner(System.in);
+	numAgencia = entrad.next();
+
+	System.out.println(banco.existAgencia(numAgencia));
+
+	break;
+
+case 16:
+	System.out.println("Digite o numero da agencia: \n");
+
+
+	entrad = new Scanner(System.in);
+	numAgencia = entrad.next();
+
+	System.out.println("Digite o numero da conta \n");
+
+
+	entrad = new Scanner(System.in);
+	numConta = entrad.next();
+
+	System.out.println(banco.existeConta(numAgencia, numConta));
+	
+	break;
+
+case 17:
+	System.out.println(banco.listaAgenciasNesteBanco());
+	break;
+
+	
+case 18:
+	System.out.println("Digite o numero da agencia: \n");
+
+
+	entrad = new Scanner(System.in);
+	numAgencia = entrad.next();
+	
+	System.out.println(banco.listacontasAgencia(numAgencia));
+	break;
+case 19:
+	
+	banco = banco.recupEstadoBC();
+	
+	break;
+	
+case 20:
+	
+	banco.recupEstadoAG();
+	
+	break;
+	
+case 21:
+	
+	banco.salvarEstadoAG();
+	
+	break;
+	
 			}
 		}
 	}

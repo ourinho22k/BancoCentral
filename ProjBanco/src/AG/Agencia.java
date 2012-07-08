@@ -93,7 +93,7 @@ public class Agencia {
 
 		return numeContas;
 	}
-
+	
 	/**
 	 * seta a variavel do numero de contas
 	 * @param numCon
@@ -101,7 +101,7 @@ public class Agencia {
 	public void setNumeContas(String numCon) {
 		this.numeContas = numCon;
 	}
-
+	
 	/**
 	 * retorna uma String com numero da poupanca
 	 * @return
@@ -156,6 +156,8 @@ public class Agencia {
 //					System.out.println("parabéns, agora voce cadastrou a conta " + con.getNumConta() + " para o cliente: " + this.clientes.get(numcliente).getNomeCliente());
 					return true;
 				}
+				
+				return false;
 			}
 
 		}
@@ -287,6 +289,7 @@ public class Agencia {
 					
 				}
 			}
+			return "erro";
 		}
 		
 		
@@ -435,10 +438,16 @@ public class Agencia {
 	 */
 	@Override
 	public String toString() {
-		return "Agencia  Numero:	" + getAgencia();
-//				+ "\nNumero de contas:	" + numeContas + ", numPoupanca=" + numPoupanca
-//				+ ", clientes=" + clientes.toString() + ", contas=" + contas + ", cclientes="
-//				+ cclientes.toString() + "]";
+		return this.getAgencia();
+
 	}
 
+	
+	public String listaContasNestaAgencia(){
+		
+		return contas.toString();
+		
+		 
+		
+	}
 }
